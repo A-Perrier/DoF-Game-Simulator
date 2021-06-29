@@ -37,7 +37,7 @@ export default function App() {
 
   function handlePlayerInput (text, p) {
     const playersCopy = players.slice()
-    playersCopy[p] = { username: text }
+    playersCopy[p] = text
     setPlayers(playersCopy)
   }
   
