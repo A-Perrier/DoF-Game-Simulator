@@ -3,7 +3,11 @@ import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { ImageBackground, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ImageBackground, LogBox, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import Game from './components/Game';
+
+LogBox.ignoreLogs(['Remote debugger'])
+LogBox.ignoreLogs(['Failed prop type'])
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -13,6 +17,7 @@ export default function App() {
   const [nbPlayerStep, setNbPlayerStep] = useState(true)
   const [namesStep, setNamesStep] = useState(false)
   const [nbRoundStep, setNbRoundStep] = useState(false)
+  const [gameStep, setGameStep] = useState(false)
 
   const [nbPlayers, setNbPlayers] = useState('1')
   const [players, setPlayers] = useState([])
@@ -54,7 +59,8 @@ export default function App() {
   }
 
   function toGameLaunch () {
-    console.log('Voici les joueurs finaux: ', players, 'Voici le nombre de rounds : ' + nbRounds)
+    setNbRoundStep(false)
+    setGameStep(true)
   }
 
   function renderPlayerNameInputs () {
@@ -101,7 +107,7 @@ export default function App() {
                   <Text style={styles.textBtn}>Continuer</Text>
                 </Pressable>
                 <Pressable onPress={toNbPlayersStep}>
-                  <Text style={styles.textBtn}>Retour</Text>
+                  <Text style={[styles.textBtn, {marginTop: -30}]}>Retour</Text>
                 </Pressable>
               </View>
             }
@@ -115,9 +121,14 @@ export default function App() {
                   <Text style={styles.textBtn}>Continuer</Text>
                 </Pressable>
                 <Pressable onPress={toNamesStep}>
-                  <Text style={styles.textBtn}>Retour</Text>
+                  <Text style={[styles.textBtn, {marginTop: -30}]}>Retour</Text>
                 </Pressable>
               </View>
+            }
+
+            {
+              gameStep &&
+              <Game players={players} rounds={nbRounds} />
             }
           <StatusBar style="auto" />
         </ImageBackground>
