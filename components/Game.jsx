@@ -64,9 +64,9 @@ const Game = ({ players, rounds }) => {
           tabBarOptions={ getTabBarOptions() }
           screenOptions={ getScreenOptions() }  
           >
-          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0], player2: players[1] } } />
+          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0], player2: players[1], twoTables: nbTables > 1 } } />
           { nbTables > 1 &&
-          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2], player2: players[3] } } />
+          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2], player2: players[3], twoTables: nbTables > 1 } } />
           }
         </Tabs.Navigator>
       </NavigationContainer>

@@ -130,7 +130,7 @@ export default function App() {
               gameStep &&
               <Game players={players} rounds={nbRounds} />
             }
-          <StatusBar style="auto" />
+          <StatusBar style="auto" hidden={true}/>
         </ImageBackground>
       </View>
     );
