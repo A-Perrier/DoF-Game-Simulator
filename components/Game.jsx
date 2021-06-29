@@ -1,6 +1,5 @@
 import React from 'react';
-import { ImageBackground, View, Image } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
@@ -64,9 +63,9 @@ const Game = ({ players, rounds }) => {
           tabBarOptions={ getTabBarOptions() }
           screenOptions={ getScreenOptions() }  
           >
-          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0], player2: players[1], twoTables: nbTables > 1 } } />
+          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0], player2: players[1] } } />
           { nbTables > 1 &&
-          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2], player2: players[3], twoTables: nbTables > 1 } } />
+          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2], player2: players[3] } } />
           }
         </Tabs.Navigator>
       </NavigationContainer>

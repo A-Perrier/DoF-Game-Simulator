@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
+import Board from './Board';
+import BoardSet from './BoardSet';
 
 const styles = {
   gameTableContainer: {
@@ -10,26 +12,14 @@ const styles = {
     flex: 1,
     resizeMode: 'cover',
     width: '100%'
-  },
-  board: {
-    flex: 1,
-  },
-  board2: {
-    flex: 1,
-  },
-  username: {
-    fontSize: 32,
-    fontFamily: 'Jomhuria',
-    color: '#F2A102',
-    marginLeft: 20,
-    marginTop: -10
   }
 }
 
-const GameTable = ({route, navigation}) => {
+// Reçoit aussi la navigation
+const GameTable = ({ route }) => {
 
   const table = route.name
-  const { player1, player2, twoTables } = route.params
+  const { player1, player2 } = route.params
   const requireSplitScreen = player1 === undefined || player2 === undefined ? false : true
   
 
@@ -38,17 +28,9 @@ const GameTable = ({route, navigation}) => {
     <View style={styles.gameTableContainer}>
       <ImageBackground source={require('../assets/backgrounds/bg-empty-shadowed.jpg')} style={styles.background}>
       { requireSplitScreen ?
-        <>
-        <View style={[styles.board, {borderBottomColor: 'white', borderWidth: 1}]}>
-          <Text style={styles.username}>{player1}</Text>
-        </View>
-        <View style={[styles.board2, {borderTopColor: 'white', borderWidth: 1}]}>
-          <Text style={styles.username}>{player2}</Text>
-        </View>
-        </> :
-        <View style={styles.board}>
-          <Text style={styles.username}>{player1}</Text>
-        </View>
+        <BoardSet player1={player1} player2={player2} />
+         :
+        <Board player={player1} />
       }
       </ImageBackground>
     </View>
