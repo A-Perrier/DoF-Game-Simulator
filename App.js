@@ -15,7 +15,7 @@ export default function App() {
   const [nbRoundStep, setNbRoundStep] = useState(false)
 
   const [nbPlayers, setNbPlayers] = useState('1')
-  const [players, setPlayers] = useState({})
+  const [players, setPlayers] = useState([])
   const [nbRounds, setNbRounds] = useState('5')
 
   function handleNbPlayers (text) {
@@ -31,16 +31,15 @@ export default function App() {
   }
 
   function handlePlayerInput (text, p) {
-    const index = p
-    setPlayers({
-      ... players, [index]: {username: text}
-    })
+    const playersCopy = players.slice()
+    playersCopy[p] = { username: text }
+    setPlayers(playersCopy)
   }
   
   function toNbPlayersStep () {
     setNamesStep(false)
     setNbPlayerStep(true)
-    setPlayers({})
+    setPlayers([])
   }
 
   function toNamesStep () {
