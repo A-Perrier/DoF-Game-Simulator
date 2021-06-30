@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
 
+import { connect } from 'react-redux'
+
 
 const styles = StyleSheet.create({
   gameContainer: {
@@ -23,10 +25,10 @@ const styles = StyleSheet.create({
 
 const Tabs = createBottomTabNavigator()
 
-const Game = ({ players, rounds }) => {
+const Game = ({ players, rounds, encounters, bosses, hordes, items }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
   // ICI ON VA VOULOIR MELANGER LES CARTES ET TOUT DISTRIBUER
-  
+  console.log(bosses)
 
   function getTabBarOptions () {
     let options
@@ -77,4 +79,13 @@ const Game = ({ players, rounds }) => {
 
 
 
-export default Game;
+const mapStateToProps = (state) => {
+  return {
+    encounters: state.encounters,
+    hordes: state.hordes,
+    bosses: state.bosses,
+    items: state.items,
+  }
+}
+
+export default connect(mapStateToProps)(Game);

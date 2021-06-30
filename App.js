@@ -6,15 +6,14 @@ import React, { useState } from 'react';
 import { ImageBackground, LogBox, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Game from './components/Game';
 import Player from './entity/Player';
-import Bosses from './entity/Bosses'
-import Hordes from './entity/Hordes'
-import ClassicEncounters from './entity/ClassicEncounters'
-import Items from './entity/Items'
+
+import { Provider } from 'react-redux';
+import Store from './Store/ConfigureStore';
 
 LogBox.ignoreLogs(['Remote debugger'])
 LogBox.ignoreLogs(['Failed prop type'])
 
-export default function App() {
+export default function App () {
   let [fontsLoaded] = useFonts({
     'Jomhuria' : require('./assets/fonts/Jomhuria-Regular.ttf')
   })
@@ -27,16 +26,6 @@ export default function App() {
   const [nbPlayers, setNbPlayers] = useState(3) // "1"
   const [players, setPlayers] = useState([new Player("Anthony"), new Player("Laura"), new Player("JC")]) // []
   const [nbRounds, setNbRounds] = useState('5')
-
-  const bosses = new Bosses()
-  const hordes = new Hordes()
-  const encounters = new ClassicEncounters()
-  const items = new Items()
-  
-  bosses.shuffle()
-  hordes.shuffle()
-  encounters.shuffle()
-  items.shuffle()
   
 
   function handleNbPlayers (text) {
@@ -75,14 +64,14 @@ export default function App() {
   }
 
   function toGameLaunch () {
-    players.forEach(player => {
-      const regularEncounters = nbRounds - 2
-      player.addItem(items.draw(2))
-            .addEncounters(encounters.draw(regularEncounters))
-            .addEncounters(hordes.draw())
-            .addEncounters(bosses.draw())
-            console.log('render')
-    })
+    //players.forEach(player => {
+    //  const regularEncounters = nbRounds - 2
+    //  player.addItem(items.draw(2))
+    //        .addEncounters(encounters.draw(regularEncounters))
+    //        .addEncounters(hordes.draw())
+    //        .addEncounters(bosses.draw())
+    //        console.log('render')
+    //})
     
     setNbRoundStep(false)
     setGameStep(true)
@@ -108,60 +97,66 @@ export default function App() {
     return <AppLoading />
   } else {
     return (
-      <View style={styles.container}>
-        <ImageBackground source={require('./assets/backgrounds/bg-home-shadowed.png')} style={styles.background}>
-            {
-              nbPlayerStep &&
-              <View style={styles.nbPlayersContainer}>
-                <Text style={styles.text}>Nombre de joueurs (1 à 4)</Text>
-                <TextInput keyboardType="numeric" style={styles.input} value={nbPlayers} onChangeText={(text) => handleNbPlayers (text)}/>
-                <Pressable onPress={toNamesStep}>
-                  <Text style={styles.textBtn}>Continuer</Text>
-                </Pressable>
-              </View>
-            }
-
-            {
-              namesStep &&
-              <View style={styles.namesContainer}>
-                <Text style={styles.text}>Entrez le nom de chaque joueur</Text>
-                <Text style={styles.miniText}>Attention, les champs vides ne seront pas pris en compte</Text>
-                <View style={styles.inputsContainer}>
-                  { renderPlayerNameInputs() }
+      <Provider store={Store}>
+        <View style={styles.container}>
+          <ImageBackground source={require('./assets/backgrounds/bg-home-shadowed.png')} style={styles.background}>
+              {
+                nbPlayerStep &&
+                <View style={styles.nbPlayersContainer}>
+                  <Text style={styles.text}>Nombre de joueurs (1 à 4)</Text>
+                  <TextInput keyboardType="numeric" style={styles.input} value={nbPlayers} onChangeText={(text) => handleNbPlayers (text)}/>
+                  <Pressable onPress={toNamesStep}>
+                    <Text style={styles.textBtn}>Continuer</Text>
+                  </Pressable>
                 </View>
-                <Pressable onPress={toRoundStep}>
-                  <Text style={styles.textBtn}>Continuer</Text>
-                </Pressable>
-                <Pressable onPress={toNbPlayersStep}>
-                  <Text style={[styles.textBtn, {marginTop: -30}]}>Retour</Text>
-                </Pressable>
-              </View>
-            }
+              }
 
-            {
-              nbRoundStep &&
-              <View style={styles.nbPlayersContainer}>
-                <Text style={styles.text}>Nombre de rounds (de 2 à 8)</Text>
-                <TextInput keyboardType="numeric" style={styles.input} value={nbRounds} onChangeText={(text) => handleNbRounds (text)}/>
-                <Pressable onPress={toGameLaunch}>
-                  <Text style={styles.textBtn}>Continuer</Text>
-                </Pressable>
-                <Pressable onPress={toNamesStep}>
-                  <Text style={[styles.textBtn, {marginTop: -30}]}>Retour</Text>
-                </Pressable>
-              </View>
-            }
+              {
+                namesStep &&
+                <View style={styles.namesContainer}>
+                  <Text style={styles.text}>Entrez le nom de chaque joueur</Text>
+                  <Text style={styles.miniText}>Attention, les champs vides ne seront pas pris en compte</Text>
+                  <View style={styles.inputsContainer}>
+                    { renderPlayerNameInputs() }
+                  </View>
+                  <Pressable onPress={toRoundStep}>
+                    <Text style={styles.textBtn}>Continuer</Text>
+                  </Pressable>
+                  <Pressable onPress={toNbPlayersStep}>
+                    <Text style={[styles.textBtn, {marginTop: -30}]}>Retour</Text>
+                  </Pressable>
+                </View>
+              }
 
-            {
-              gameStep &&
-              <Game players={players} rounds={nbRounds} />
-            }
-          <StatusBar style="auto" hidden={true}/>
-        </ImageBackground>
-      </View>
+              {
+                nbRoundStep &&
+                <View style={styles.nbPlayersContainer}>
+                  <Text style={styles.text}>Nombre de rounds (de 2 à 8)</Text>
+                  <TextInput keyboardType="numeric" style={styles.input} value={nbRounds} onChangeText={(text) => handleNbRounds (text)}/>
+                  <Pressable onPress={toGameLaunch}>
+                    <Text style={styles.textBtn}>Continuer</Text>
+                  </Pressable>
+                  <Pressable onPress={toNamesStep}>
+                    <Text style={[styles.textBtn, {marginTop: -30}]}>Retour</Text>
+                  </Pressable>
+                </View>
+              }
+
+              {
+                gameStep &&
+                <Game players={players} rounds={nbRounds} />
+              }
+            <StatusBar style="auto" hidden={true}/>
+          </ImageBackground>
+        </View>
+      </Provider>
     );
   }
 }
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
