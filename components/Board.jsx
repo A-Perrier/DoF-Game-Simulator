@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import Playmat from './Playmat';
 
-const styles = {
+const styles = StyleSheet.create({
   board: {
     flex: 1,
   },
@@ -11,13 +12,14 @@ const styles = {
     color: '#F2A102',
     marginLeft: 20,
     marginTop: -10
-  }
-}
+  },
+})
 
 const Board = ({player, style}) => {
   return ( 
     <View style={[styles.board, style]}>
       <Text style={styles.username}>{player}</Text>
+      <Playmat />
     </View>
    );
 }

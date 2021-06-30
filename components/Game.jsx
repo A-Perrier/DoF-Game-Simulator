@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
 
 
-const styles = {
+const styles = StyleSheet.create({
   gameContainer: {
     flex: 1
   },
@@ -19,7 +19,7 @@ const styles = {
     height: 15,
     marginBottom: -4
   }
-}
+})
 
 const Tabs = createBottomTabNavigator()
 

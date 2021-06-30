@@ -14,13 +14,13 @@ export default function App() {
     'Jomhuria' : require('./assets/fonts/Jomhuria-Regular.ttf')
   })
 
-  const [nbPlayerStep, setNbPlayerStep] = useState(true)
+  const [nbPlayerStep, setNbPlayerStep] = useState(false) // true
   const [namesStep, setNamesStep] = useState(false)
   const [nbRoundStep, setNbRoundStep] = useState(false)
-  const [gameStep, setGameStep] = useState(false)
+  const [gameStep, setGameStep] = useState(true) // false
 
-  const [nbPlayers, setNbPlayers] = useState('1')
-  const [players, setPlayers] = useState([])
+  const [nbPlayers, setNbPlayers] = useState(3) // "1"
+  const [players, setPlayers] = useState(["Anthony", "Laura", "JC"]) // []
   const [nbRounds, setNbRounds] = useState('5')
 
   function handleNbPlayers (text) {

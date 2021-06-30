@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 import Board from './Board';
 import BoardSet from './BoardSet';
 
-const styles = {
+const styles = StyleSheet.create({
   gameTableContainer: {
     flex: 1,
   },
@@ -13,7 +13,7 @@ const styles = {
     resizeMode: 'cover',
     width: '100%'
   }
-}
+})
 
 // Reçoit aussi la navigation
 const GameTable = ({ route }) => {
