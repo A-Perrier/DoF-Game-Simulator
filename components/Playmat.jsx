@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import DungeonDeck from './DungeonDeck';
+import Encounters from './Encounters';
 import ItemsDeck from './ItemsDeck';
 
 const styles = StyleSheet.create({
@@ -15,7 +16,8 @@ const styles = StyleSheet.create({
   },
   decks: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    backgroundColor: 'lightgray'
   }
 })
 
@@ -26,6 +28,7 @@ const Playmat = () => {
         <DungeonDeck />
         <ItemsDeck />
       </View>
+      <Encounters />
     </View>
    );
 }

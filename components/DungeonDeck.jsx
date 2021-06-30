@@ -5,8 +5,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 const styles = StyleSheet.create({
   deckContainer: {
     height: 103,
-    width: 60,
-    marginRight: 10
+    width: 60
   },
   deck: {
     height: 103,
@@ -17,13 +16,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Jomhuria',
     fontSize: 24,
     textAlign: 'center',
-    backgroundColor: 'white'
+    marginTop: -11
   }
 })
 
 const DungeonDeck = () => {
   return ( 
-    <View>
+    <View style={{marginRight: 10}}>
       <Pressable style={styles.deckContainer}>
         <Image source={require('../assets/cards/back-encounter.png')} style={styles.deck}/>
       </Pressable>

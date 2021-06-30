@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 
 const styles = StyleSheet.create({
@@ -10,14 +10,24 @@ const styles = StyleSheet.create({
   deck: {
     height: 103,
     width: 60
+  },
+  title: {
+    color: 'white',
+    fontFamily: 'Jomhuria',
+    fontSize: 24,
+    textAlign: 'center',
+    marginTop: -11
   }
 })
 
 const ItemsDeck = () => {
   return ( 
-    <Pressable style={styles.deckContainer}>
-      <Image source={require('../assets/cards/back-item.png')} style={styles.deck}/>
-    </Pressable>
+    <View style={{marginRight: 10}}>
+      <Pressable style={styles.deckContainer}>
+        <Image source={require('../assets/cards/back-item.png')} style={styles.deck}/>
+      </Pressable>
+      <Text style={styles.title}>Objets</Text>
+    </View>
   );
 }
  
