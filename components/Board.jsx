@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
 })
 
 const Board = ({player, style}) => {
-  //console.log(player)
+  
   return ( 
     <View style={[styles.board, style]}>
       <Text style={styles.username}>{player.name}</Text>
-      <Playmat />
+      <Playmat player={player}/>
     </View>
    );
 }

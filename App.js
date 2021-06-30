@@ -6,6 +6,10 @@ import React, { useState } from 'react';
 import { ImageBackground, LogBox, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Game from './components/Game';
 import Player from './entity/Player';
+import Bosses from './entity/Bosses'
+import Hordes from './entity/Hordes'
+import ClassicEncounters from './entity/ClassicEncounters'
+import Items from './entity/Items'
 
 LogBox.ignoreLogs(['Remote debugger'])
 LogBox.ignoreLogs(['Failed prop type'])
@@ -17,12 +21,23 @@ export default function App() {
 
   const [nbPlayerStep, setNbPlayerStep] = useState(false) // true
   const [namesStep, setNamesStep] = useState(false)
-  const [nbRoundStep, setNbRoundStep] = useState(false)
-  const [gameStep, setGameStep] = useState(true) // false
+  const [nbRoundStep, setNbRoundStep] = useState(true) // false
+  const [gameStep, setGameStep] = useState(false) // false
 
   const [nbPlayers, setNbPlayers] = useState(3) // "1"
   const [players, setPlayers] = useState([new Player("Anthony"), new Player("Laura"), new Player("JC")]) // []
   const [nbRounds, setNbRounds] = useState('5')
+
+  const bosses = new Bosses()
+  const hordes = new Hordes()
+  const encounters = new ClassicEncounters()
+  const items = new Items()
+  
+  bosses.shuffle()
+  hordes.shuffle()
+  encounters.shuffle()
+  items.shuffle()
+  
 
   function handleNbPlayers (text) {
     if (text < 1) text = 1
@@ -60,9 +75,19 @@ export default function App() {
   }
 
   function toGameLaunch () {
+    players.forEach(player => {
+      const regularEncounters = nbRounds - 2
+      player.addItem(items.draw(2))
+            .addEncounters(encounters.draw(regularEncounters))
+            .addEncounters(hordes.draw())
+            .addEncounters(bosses.draw())
+            console.log('render')
+    })
+    
     setNbRoundStep(false)
     setGameStep(true)
   }
+
 
   function renderPlayerNameInputs () {
     const inputs = []

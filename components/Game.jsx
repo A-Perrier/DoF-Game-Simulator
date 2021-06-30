@@ -3,10 +3,6 @@ import { View, Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
-import Bosses from '../entity/Bosses'
-import Hordes from '../entity/Hordes'
-import ClassicEncounters from '../entity/ClassicEncounters'
-import Items from '../entity/Items'
 
 
 const styles = StyleSheet.create({
@@ -30,23 +26,7 @@ const Tabs = createBottomTabNavigator()
 const Game = ({ players, rounds }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
   // ICI ON VA VOULOIR MELANGER LES CARTES ET TOUT DISTRIBUER
-  const bosses = new Bosses()
-  const hordes = new Hordes()
-  const encounters = new ClassicEncounters()
-  const items = new Items()
   
-  bosses.shuffle()
-  hordes.shuffle()
-  encounters.shuffle()
-  items.shuffle()
-
-  players.forEach(player => {
-    const regularEncounters = rounds - 2
-    player.addItem(items.draw(2))
-          .addEncounters(encounters.draw(regularEncounters))
-          .addEncounters(hordes.draw())
-          .addEncounters(bosses.draw())
-  })
 
   function getTabBarOptions () {
     let options

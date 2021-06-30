@@ -34,37 +34,18 @@ const styles = StyleSheet.create({
 })
 
 
-const Hand = () => {
+const Hand = ({ cards }) => {
+  
   return ( 
     <View style={styles.handContainer}>
       <View style={styles.hand}>
-      <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
-
-        <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
-
-        <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
-
-        <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
-
-        <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
-
-        <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
-
-        <Pressable style={styles.pressableCard}>
-          <Image source={require('../assets/cards/items/Arbalete-de-fitland-1.png')} style={styles.card}/>
-        </Pressable>
+      {
+        cards.map((card, index) =>
+          <Pressable key={index} style={styles.pressableCard}>
+            <Image source={card.src} style={styles.card}/>
+          </Pressable>
+        )
+      }
       </View>
       <Text style={styles.title}>Main</Text>
     </View>

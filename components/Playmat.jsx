@@ -4,6 +4,10 @@ import DungeonDeck from './DungeonDeck';
 import Encounters from './Encounters';
 import Hand from './Hand';
 import ItemsDeck from './ItemsDeck';
+import Bosses from '../entity/Bosses'
+import Hordes from '../entity/Hordes'
+import ClassicEncounters from '../entity/ClassicEncounters'
+import Items from '../entity/Items'
 
 const styles = StyleSheet.create({
   playmat: {
@@ -27,10 +31,8 @@ const styles = StyleSheet.create({
   }
 })
 
-const Playmat = () => {
-  // On doit trouver le moyen de gérer le mélange et la pioche à partir d'un paquet unique
-  const [encounters, setEncounters] = useState([])
-  const [items, setItems] = useState([]) 
+const Playmat = ({ player }) => {
+  const [render, setRender] = useState(0)
 
   function onDungeonPress () {
     console.log('Donjon pressé !')
@@ -46,9 +48,9 @@ const Playmat = () => {
         <DungeonDeck onPress={onDungeonPress}/>
         <ItemsDeck onPress={onItemsPress}/>
       </View>
-      <Encounters />
-      <View style={styles.hand}>
-        <Hand />
+      <Encounters cards={player.encounters} />
+      <View style={styles.hand} >
+        <Hand cards={player.hand} />
       </View>
     </View>
    );
