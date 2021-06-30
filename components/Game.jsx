@@ -3,6 +3,10 @@ import { View, Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
+import Bosses from '../entity/Bosses'
+import Hordes from '../entity/Hordes'
+import ClassicEncounters from '../entity/ClassicEncounters'
+import Items from '../entity/Items'
 
 
 const styles = StyleSheet.create({
@@ -25,7 +29,8 @@ const Tabs = createBottomTabNavigator()
 
 const Game = ({ players, rounds }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
-  console.log(players)
+
+
 
   function getTabBarOptions () {
     let options
