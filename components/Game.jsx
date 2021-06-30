@@ -40,8 +40,13 @@ const Game = ({ players, rounds }) => {
   encounters.shuffle()
   items.shuffle()
 
-  console.log(players)
-
+  players.forEach(player => {
+    const regularEncounters = rounds - 2
+    player.addItem(items.draw(2))
+          .addEncounters(encounters.draw(regularEncounters))
+          .addEncounters(hordes.draw())
+          .addEncounters(bosses.draw())
+  })
 
   function getTabBarOptions () {
     let options
@@ -80,9 +85,9 @@ const Game = ({ players, rounds }) => {
           tabBarOptions={ getTabBarOptions() }
           screenOptions={ getScreenOptions() }  
           >
-          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0]?.name, player2: players[1]?.name } } />
+          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { players: [players[0], players[1]] } } />
           { nbTables > 1 &&
-          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2]?.name, player2: players[3]?.name } } />
+          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { players: [players[2], players[3]] } } />
           }
         </Tabs.Navigator>
       </NavigationContainer>

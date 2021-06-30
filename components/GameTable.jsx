@@ -19,17 +19,18 @@ const styles = StyleSheet.create({
 const GameTable = ({ route }) => {
 
   const table = route.name
-  const { player1, player2 } = route.params
+  const [ player1, player2 ] = route.params.players
   const requireSplitScreen = player1 === undefined || player2 === undefined ? false : true
   
-
+  //console.log('Joueur 1: ', player1)
+  //console.log('Joueur 2 :', player2)
   
   return ( 
     <View style={styles.gameTableContainer}>
       <ImageBackground source={require('../assets/backgrounds/bg-empty-shadowed.jpg')} style={styles.background}>
       { requireSplitScreen ?
-        <BoardSet player1={player1} player2={player2} />
-         :
+        <BoardSet players={route.params.players} />
+         : 
         <Board player={player1} />
       }
       </ImageBackground>

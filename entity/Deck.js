@@ -12,7 +12,14 @@ export default class Deck {
     return this.cards;
   }
 
-  draw () {
-    return this.cards[0]
+  draw (num = 1) {
+    const cards = []
+
+    for (let i = 0; i < num; i++) {
+      cards.push(this.cards[0])
+      this.cards.shift()
+    }
+
+    return cards
   }
 }
