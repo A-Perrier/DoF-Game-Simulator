@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const DungeonDeck = () => {
+const DungeonDeck = ({ onPress }) => {
   return ( 
     <View style={{marginRight: 10}}>
-      <Pressable style={styles.deckContainer}>
+      <Pressable style={styles.deckContainer} onPress={onPress}>
         <Image source={require('../assets/cards/back-encounter.png')} style={styles.deck}/>
       </Pressable>
       <Text style={styles.title}>Donjon</Text>

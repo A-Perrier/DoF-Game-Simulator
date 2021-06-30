@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { ImageBackground, LogBox, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Game from './components/Game';
+import Player from './entity/Player';
 
 LogBox.ignoreLogs(['Remote debugger'])
 LogBox.ignoreLogs(['Failed prop type'])
@@ -20,7 +21,7 @@ export default function App() {
   const [gameStep, setGameStep] = useState(true) // false
 
   const [nbPlayers, setNbPlayers] = useState(3) // "1"
-  const [players, setPlayers] = useState(["Anthony", "Laura", "JC"]) // []
+  const [players, setPlayers] = useState([new Player("Anthony"), new Player("Laura"), new Player("JC")]) // []
   const [nbRounds, setNbRounds] = useState('5')
 
   function handleNbPlayers (text) {
@@ -37,7 +38,7 @@ export default function App() {
 
   function handlePlayerInput (text, p) {
     const playersCopy = players.slice()
-    playersCopy[p] = text
+    playersCopy[p] = new Player(text)
     setPlayers(playersCopy)
   }
   

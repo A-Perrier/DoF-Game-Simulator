@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import DungeonDeck from './DungeonDeck';
 import Encounters from './Encounters';
 import Hand from './Hand';
@@ -28,11 +28,23 @@ const styles = StyleSheet.create({
 })
 
 const Playmat = () => {
+  // On doit trouver le moyen de gérer le mélange et la pioche à partir d'un paquet unique
+  const [encounters, setEncounters] = useState([])
+  const [items, setItems] = useState([]) 
+
+  function onDungeonPress () {
+    console.log('Donjon pressé !')
+  }
+
+  function onItemsPress() {
+    console.log('Objets pressés !')
+  }
+
   return ( 
     <View style={styles.playmat}>
       <View style={styles.decks}>
-        <DungeonDeck />
-        <ItemsDeck />
+        <DungeonDeck onPress={onDungeonPress}/>
+        <ItemsDeck onPress={onItemsPress}/>
       </View>
       <Encounters />
       <View style={styles.hand}>

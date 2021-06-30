@@ -224,7 +224,7 @@ export const boss = [
   { 
     name: "Anabo le sec",
     src: require('./assets/cards/rencontres/boss/Anabo-le-sec.png')
-  },
+  }, 
   { 
     name: "L'hydrocoolique",
     src: require('./assets/cards/rencontres/boss/L-hydrocoolique.png')
@@ -249,6 +249,7 @@ export const boss = [
     name: "Melusine",
     src: require('./assets/cards/rencontres/boss/Melusine.png')
   },
+
   { 
     name: "Miroir qui juge",
     src: require('./assets/cards/rencontres/boss/Miroir-qui-juge.png')
@@ -256,7 +257,7 @@ export const boss = [
   { 
     name: "Spectre couronné",
     src: require('./assets/cards/rencontres/boss/Spectre-couronne.png')
-  },
+  }
 ]
 
 export const items = [
@@ -335,10 +336,6 @@ export const items = [
   { 
     name: "Epée de bois",
     src: require('./assets/cards/items/Epee-de-bois-2.png')
-  },
-  { 
-    name: "Epée de bois",
-    src: require('./assets/cards/items/Epee-de-bois-3.png')
   },
   { 
     name: "Epée de fonte",

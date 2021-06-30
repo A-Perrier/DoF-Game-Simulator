@@ -25,6 +25,7 @@ const Tabs = createBottomTabNavigator()
 
 const Game = ({ players, rounds }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
+  console.log(players)
 
   function getTabBarOptions () {
     let options
@@ -63,9 +64,9 @@ const Game = ({ players, rounds }) => {
           tabBarOptions={ getTabBarOptions() }
           screenOptions={ getScreenOptions() }  
           >
-          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0], player2: players[1] } } />
+          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { player1: players[0]?.name, player2: players[1]?.name } } />
           { nbTables > 1 &&
-          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2], player2: players[3] } } />
+          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { player1: players[2]?.name, player2: players[3]?.name } } />
           }
         </Tabs.Navigator>
       </NavigationContainer>
