@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
@@ -25,10 +25,19 @@ const styles = StyleSheet.create({
 
 const Tabs = createBottomTabNavigator()
 
-const Game = ({ players, rounds, encounters, bosses, hordes, items }) => {
+const Game = ({ playersFromApp, rounds, players, dispatch }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
   // ICI ON VA VOULOIR MELANGER LES CARTES ET TOUT DISTRIBUER
-  console.log(bosses)
+  useEffect(() => {
+    const action = {type: 'DECK_INITIALIZATION', value: null}
+    dispatch(action)
+  }, [])
+  
+  useEffect(() => {
+    const action = {type: 'PLAYERS_INITIALIZATION', value: playersFromApp}
+    dispatch(action)
+  }, [])
+  console.log('useeffect: ', players)
 
   function getTabBarOptions () {
     let options
@@ -58,8 +67,8 @@ const Game = ({ players, rounds, encounters, bosses, hordes, items }) => {
     return {}
   }
 
-  return (
-  <View style={styles.gameContainer}>
+  return ( <></>
+  /* <View style={styles.gameContainer}>
       <NavigationContainer>
         <Tabs.Navigator
           style={styles.tabbar} 
@@ -73,7 +82,7 @@ const Game = ({ players, rounds, encounters, bosses, hordes, items }) => {
           }
         </Tabs.Navigator>
       </NavigationContainer>
-  </View>
+  </View> */
   );
 }
 
@@ -81,10 +90,11 @@ const Game = ({ players, rounds, encounters, bosses, hordes, items }) => {
 
 const mapStateToProps = (state) => {
   return {
-    encounters: state.encounters,
-    hordes: state.hordes,
-    bosses: state.bosses,
-    items: state.items,
+    encounters: state.manageDeck.encounters,
+    hordes: state.manageDeck.hordes,
+    bosses: state.manageDeck.bosses,
+    items: state.manageDeck.items,
+    players: state.managePlayers.players
   }
 }
 

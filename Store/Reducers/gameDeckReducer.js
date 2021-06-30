@@ -12,15 +12,15 @@ const initialState = {
 
 export function manageDeck (state = initialState, action) {
   let nextState
-
+  
   switch (action.type) {
-    case 'INITIALIZATION':
+    case 'DECK_INITIALIZATION':
       nextState = {
         ... state,
-        encounters: encounters.shuffle(),
-        hordes: hordes.shuffle(),
-        bosses: bosses.shuffle(),
-        items: items.shuffle
+        encounters: state.encounters.shuffle(),
+        hordes: state.hordes.shuffle(),
+        bosses: state.bosses.shuffle(),
+        items: state.items.shuffle()
       }
       return nextState || state
       break;

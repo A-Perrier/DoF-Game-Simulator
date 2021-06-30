@@ -24,7 +24,7 @@ export default function App () {
   const [gameStep, setGameStep] = useState(false) // false
 
   const [nbPlayers, setNbPlayers] = useState(3) // "1"
-  const [players, setPlayers] = useState([new Player("Anthony"), new Player("Laura"), new Player("JC")]) // []
+  const [players, setPlayers] = useState(["Anthony", "Laura", "JC"]) // []
   const [nbRounds, setNbRounds] = useState('5')
   
 
@@ -42,7 +42,7 @@ export default function App () {
 
   function handlePlayerInput (text, p) {
     const playersCopy = players.slice()
-    playersCopy[p] = new Player(text)
+    playersCopy[p] = text
     setPlayers(playersCopy)
   }
   
@@ -64,15 +64,6 @@ export default function App () {
   }
 
   function toGameLaunch () {
-    //players.forEach(player => {
-    //  const regularEncounters = nbRounds - 2
-    //  player.addItem(items.draw(2))
-    //        .addEncounters(encounters.draw(regularEncounters))
-    //        .addEncounters(hordes.draw())
-    //        .addEncounters(bosses.draw())
-    //        console.log('render')
-    //})
-    
     setNbRoundStep(false)
     setGameStep(true)
   }
@@ -144,7 +135,7 @@ export default function App () {
 
               {
                 gameStep &&
-                <Game players={players} rounds={nbRounds} />
+                <Game playersFromApp={players} rounds={nbRounds} />
               }
             <StatusBar style="auto" hidden={true}/>
           </ImageBackground>
