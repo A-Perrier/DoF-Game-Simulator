@@ -4,14 +4,17 @@ import Playmat from './Playmat';
 
 const styles = StyleSheet.create({
   board: {
-    flex: 1,
+    flex: 1
   },
   username: {
     fontSize: 32,
     fontFamily: 'Jomhuria',
     color: '#F2A102',
     marginLeft: 20,
-    marginTop: -10
+    marginTop: -10,
+    position: 'relative',
+    top: 0,
+    zIndex: 3
   },
 })
 

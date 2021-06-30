@@ -4,12 +4,12 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   deckContainer: {
-    height: 103,
-    width: 60
+    height: 120,
+    width: 70
   },
   deck: {
-    height: 103,
-    width: 60
+    height: 120,
+    width: 70
   },
   title: {
     color: 'white',
