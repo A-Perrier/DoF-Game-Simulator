@@ -29,7 +29,18 @@ const Tabs = createBottomTabNavigator()
 
 const Game = ({ players, rounds }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
+  // ICI ON VA VOULOIR MELANGER LES CARTES ET TOUT DISTRIBUER
+  const bosses = new Bosses()
+  const hordes = new Hordes()
+  const encounters = new ClassicEncounters()
+  const items = new Items()
+  
+  bosses.shuffle()
+  hordes.shuffle()
+  encounters.shuffle()
+  items.shuffle()
 
+  console.log(players)
 
 
   function getTabBarOptions () {
