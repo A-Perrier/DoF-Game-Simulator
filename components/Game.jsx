@@ -33,7 +33,6 @@ const Game = ({ playersFromApp, rounds, players, dispatch, bosses }) => {
     const action = {type: 'GAME_INITIALIZATION', value: {playersFromApp, rounds}}
     dispatch(action)
   }, [])
-  
 
   function getTabBarOptions () {
     let options
