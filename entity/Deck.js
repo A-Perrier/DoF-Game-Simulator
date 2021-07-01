@@ -9,7 +9,7 @@ export default class Deck {
         this.cards[i] = this.cards[j];
         this.cards[j] = x;
     }
-    return this.cards;
+    return this;
   }
 
   draw (num = 1) {

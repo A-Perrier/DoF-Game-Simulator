@@ -8,7 +8,7 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [x] Sélection du nombre de joueurs
 - [x] Insertion du nom de chaque joueur
 - [x] Sélection du nombre de rounds
-- [ ] Mélange des cartes à l'initialisation de la partie
+- [x] Mélange des cartes à l'initialisation de la partie
 - [x] Répartition des écrans de jeu pour chaque joueur (par écran de deux joueurs)
 - [ ] Pioche en touchant les paquets de cartes
 - [ ] Zoom en touchant une carte

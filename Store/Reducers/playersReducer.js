@@ -11,8 +11,6 @@ export function managePlayers ( state = initialState, action ) {
       
       action.value.map(playerName => {
         players.push(new Player(playerName))
-
-        // On va gérer les pioches initiales ici, il nous faudra aussi le nombre de rounds
       })
 
       nextState = {

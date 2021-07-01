@@ -25,19 +25,15 @@ const styles = StyleSheet.create({
 
 const Tabs = createBottomTabNavigator()
 
-const Game = ({ playersFromApp, rounds, players, dispatch }) => {
+const Game = ({ playersFromApp, rounds, players, dispatch, bosses }) => {
   const nbTables = (players.length - 2) > 0 ? 2 : 1
-  // ICI ON VA VOULOIR MELANGER LES CARTES ET TOUT DISTRIBUER
+
+  // On initialise les cartes de départ, les joueurs et leur donjon/items
   useEffect(() => {
-    const action = {type: 'DECK_INITIALIZATION', value: null}
+    const action = {type: 'GAME_INITIALIZATION', value: {playersFromApp, rounds}}
     dispatch(action)
   }, [])
   
-  useEffect(() => {
-    const action = {type: 'PLAYERS_INITIALIZATION', value: playersFromApp}
-    dispatch(action)
-  }, [])
-  console.log('useeffect: ', players)
 
   function getTabBarOptions () {
     let options
@@ -90,11 +86,11 @@ const Game = ({ playersFromApp, rounds, players, dispatch }) => {
 
 const mapStateToProps = (state) => {
   return {
-    encounters: state.manageDeck.encounters,
-    hordes: state.manageDeck.hordes,
-    bosses: state.manageDeck.bosses,
-    items: state.manageDeck.items,
-    players: state.managePlayers.players
+    encounters: state.encounters,
+    hordes: state.hordes,
+    bosses: state.bosses,
+    items: state.items,
+    players: state.players
   }
 }
 
