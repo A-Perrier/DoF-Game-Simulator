@@ -3,7 +3,6 @@ import { View, Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
-
 import { connect } from 'react-redux'
 
 
@@ -25,15 +24,15 @@ const styles = StyleSheet.create({
 
 const Tabs = createBottomTabNavigator()
 
-const Game = ({ playersFromApp, rounds, players, dispatch, bosses }) => {
-  const nbTables = (players.length - 2) > 0 ? 2 : 1
+const Game = ({ playersFromApp, rounds, players, dispatch }) => {
+  const nbTables = (playersFromApp.length - 2) > 0 ? 2 : 1
 
   // On initialise les cartes de départ, les joueurs et leur donjon/items
   useEffect(() => {
     const action = {type: 'GAME_INITIALIZATION', value: {playersFromApp, rounds}}
     dispatch(action)
   }, [])
-
+  
   function getTabBarOptions () {
     let options
     if (nbTables > 1) {
@@ -62,22 +61,22 @@ const Game = ({ playersFromApp, rounds, players, dispatch, bosses }) => {
     return {}
   }
 
-  return ( <></>
-  /* <View style={styles.gameContainer}>
-      <NavigationContainer>
-        <Tabs.Navigator
-          style={styles.tabbar} 
-          initialRouteName="Table 1" 
-          tabBarOptions={ getTabBarOptions() }
-          screenOptions={ getScreenOptions() }  
-          >
-          <Tabs.Screen name="Table 1" component={GameTable} initialParams={ { players: [players[0], players[1]] } } />
-          { nbTables > 1 &&
-          <Tabs.Screen name="Table 2" component={GameTable} initialParams={ { players: [players[2], players[3]] } } />
-          }
-        </Tabs.Navigator>
-      </NavigationContainer>
-  </View> */
+  return (
+  <View style={styles.gameContainer}>
+    <NavigationContainer>
+      <Tabs.Navigator
+        style={styles.tabbar} 
+        initialRouteName="Table 1" 
+        tabBarOptions={ getTabBarOptions() }
+        screenOptions={ getScreenOptions() }  
+        >
+        <Tabs.Screen name="Table 1" component={GameTable}  />
+        { nbTables > 1 &&
+        <Tabs.Screen name="Table 2" component={GameTable}  />
+        }
+      </Tabs.Navigator>
+    </NavigationContainer>
+  </View>
   );
 }
 
@@ -89,7 +88,7 @@ const mapStateToProps = (state) => {
     hordes: state.hordes,
     bosses: state.bosses,
     items: state.items,
-    players: state.players
+    players: state.players,
   }
 }
 

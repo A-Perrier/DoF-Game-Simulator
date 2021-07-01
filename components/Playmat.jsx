@@ -32,8 +32,6 @@ const styles = StyleSheet.create({
 })
 
 const Playmat = ({ player }) => {
-  const [render, setRender] = useState(0)
-
   function onDungeonPress () {
     console.log('Donjon pressé !')
   }

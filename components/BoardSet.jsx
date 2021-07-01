@@ -2,7 +2,6 @@ import React from 'react';
 import Board from './Board';
 
 const BoardSet = ({ players }) => {
-  //console.log(players)
   return (
     <>
     <Board player={players[0]} style={{borderBottomColor: 'white', borderWidth: 1}} />
