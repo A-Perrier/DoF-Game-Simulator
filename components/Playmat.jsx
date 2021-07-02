@@ -4,10 +4,7 @@ import DungeonDeck from './DungeonDeck';
 import Encounters from './Encounters';
 import Hand from './Hand';
 import ItemsDeck from './ItemsDeck';
-import Bosses from '../entity/Bosses'
-import Hordes from '../entity/Hordes'
-import ClassicEncounters from '../entity/ClassicEncounters'
-import Items from '../entity/Items'
+import { connect } from 'react-redux'
 
 const styles = StyleSheet.create({
   playmat: {
@@ -31,13 +28,14 @@ const styles = StyleSheet.create({
   }
 })
 
-const Playmat = ({ player }) => {
+const Playmat = ({ player, dispatch, players }) => {
   function onDungeonPress () {
     console.log('Donjon pressé !')
   }
 
   function onItemsPress() {
-    console.log('Objets pressés !')
+    const action = { type: 'DRAW_ITEM', value: player}
+    dispatch(action)
   }
 
   return ( 
@@ -54,4 +52,11 @@ const Playmat = ({ player }) => {
    );
 }
  
-export default Playmat;
+const mapStateToProps = (state) => {
+  return {
+    players: state.players
+  }
+}
+
+export default connect(mapStateToProps)(Playmat);
+//export default Playmat;

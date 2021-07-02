@@ -1,10 +1,12 @@
 export default class Player {
+  id
   name = ""
   hand = []
   encounters = []
 
-  constructor (name) {
+  constructor (name, id) {
     this.name = name
+    this.id = id
   }
 
   addItem (card) {

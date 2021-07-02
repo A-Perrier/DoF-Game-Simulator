@@ -10,7 +10,8 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [x] Sélection du nombre de rounds
 - [x] Mélange des cartes à l'initialisation de la partie
 - [x] Répartition des écrans de jeu pour chaque joueur (par écran de deux joueurs)
-- [ ] Pioche en touchant les paquets de cartes
+- [x] Pioche en touchant les paquets de cartes
+- [ ] Modification de la rencontre en touchant le donjon
 - [ ] Zoom en touchant une carte
 - [ ] Défaussage des cartes de la main
 - [ ] Blocage de l'ajout en main si 7 cartes présentes

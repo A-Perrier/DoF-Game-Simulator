@@ -26,13 +26,12 @@ export function manageGame (state = initialState, action) {
         items: state.items.shuffle()
       }
 
-
       // Phase de création des joueurs et pioche initiale
       let players = []
       const regularEncounters = action.value.rounds - 2
 
-      action.value.playersFromApp.map(playerName => {
-        let player = new Player(playerName)
+      action.value.playersFromApp.map((playerName, index) => {
+        let player = new Player(playerName, index)
 
         player.addItem(middleState.items.draw(2))
               .addEncounters(middleState.encounters.draw(regularEncounters))
@@ -41,7 +40,6 @@ export function manageGame (state = initialState, action) {
 
         players.push(player)
       })
-
 
       // Injection du nouveau state avec les cartes mélangées et supprimées par les draws
       nextState = {
@@ -56,6 +54,29 @@ export function manageGame (state = initialState, action) {
       return nextState || state
       break;
   
+
+    case 'DRAW_ITEM':
+      const currentPlayer = action.value
+      const playersCopy = state.players.slice()
+      middleState = {
+        items: state.items
+      }
+
+      playersCopy.map(player => {
+        if (player === currentPlayer) {
+          player.addItem(middleState.items.draw())
+        }
+      })
+
+      nextState = {
+        ... state,
+        items: middleState.items,
+        players: playersCopy
+      }
+
+      return nextState || state
+      break;
+
     default:
       return state
       break;
