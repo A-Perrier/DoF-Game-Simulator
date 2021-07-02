@@ -5,6 +5,7 @@ import Encounters from './Encounters';
 import Hand from './Hand';
 import ItemsDeck from './ItemsDeck';
 import { connect } from 'react-redux'
+import { round } from 'react-native-reanimated';
 
 const styles = StyleSheet.create({
   playmat: {
@@ -28,9 +29,13 @@ const styles = StyleSheet.create({
   }
 })
 
-const Playmat = ({ player, dispatch, players }) => {
+const Playmat = ({ player, dispatch, rounds }) => {
+  const [currentRound, setCurrentRound] = useState(1)
+
   function onDungeonPress () {
-    console.log('Donjon pressé !')
+    if (rounds > currentRound) {
+      setCurrentRound(currentRound + 1)
+    }
   }
 
   function onItemsPress() {
@@ -44,7 +49,7 @@ const Playmat = ({ player, dispatch, players }) => {
         <DungeonDeck onPress={onDungeonPress}/>
         <ItemsDeck onPress={onItemsPress}/>
       </View>
-      <Encounters cards={player.encounters} />
+      <Encounters cards={player.encounters} round={currentRound}/>
       <View style={styles.hand} >
         <Hand cards={player.hand} />
       </View>
@@ -54,7 +59,8 @@ const Playmat = ({ player, dispatch, players }) => {
  
 const mapStateToProps = (state) => {
   return {
-    players: state.players
+    players: state.players,
+    rounds: state.rounds
   }
 }
 

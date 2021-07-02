@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
 
 const Tabs = createBottomTabNavigator()
 
-const Game = ({ playersFromApp, rounds, players, dispatch }) => {
+const Game = ({ playersFromApp, roundsFromApp, players, dispatch }) => {
   const nbTables = (playersFromApp.length - 2) > 0 ? 2 : 1
-
+  
   // On initialise les cartes de départ, les joueurs et leur donjon/items
   useEffect(() => {
-    const action = {type: 'GAME_INITIALIZATION', value: {playersFromApp, rounds}}
+    const action = {type: 'GAME_INITIALIZATION', value: {playersFromApp, roundsFromApp}}
     dispatch(action)
   }, [])
   
@@ -89,6 +89,7 @@ const mapStateToProps = (state) => {
     bosses: state.bosses,
     items: state.items,
     players: state.players,
+    rounds: state.rounds
   }
 }
 

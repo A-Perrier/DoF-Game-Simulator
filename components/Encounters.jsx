@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
   }
 })
 
-const Encounters = ({ cards }) => {
+const Encounters = ({ cards, round }) => {
   return ( 
     <View style={{flex: 1, alignItems: 'center'}}>
       <View style={{width: 68}}>
       <Pressable style={styles.pressableCard}>
-        <Image source={cards[0].src} style={styles.card}/>
+        <Image source={cards[round - 1].src} style={styles.card}/>
       </Pressable>
       <Text style={styles.title}>Rencontres</Text>
       </View>

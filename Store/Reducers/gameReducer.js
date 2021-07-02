@@ -10,7 +10,8 @@ const initialState = {
   hordes: new Hordes(),
   bosses: new Bosses(),
   items: new Items(),
-  players: []
+  players: [],
+  rounds: 5
 }
 
 export function manageGame (state = initialState, action) {
@@ -28,7 +29,7 @@ export function manageGame (state = initialState, action) {
 
       // Phase de création des joueurs et pioche initiale
       let players = []
-      const regularEncounters = action.value.rounds - 2
+      const regularEncounters = action.value.roundsFromApp - 2
 
       action.value.playersFromApp.map((playerName, index) => {
         let player = new Player(playerName, index)
@@ -48,7 +49,8 @@ export function manageGame (state = initialState, action) {
         hordes: middleState.hordes,
         bosses: middleState.bosses,
         items: middleState.items,
-        players: players
+        players: players,
+        rounds: action.value.roundsFromApp
       }
 
       return nextState || state
