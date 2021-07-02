@@ -15,4 +15,4 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [ ] Zoom en touchant une carte
 - [ ] Défaussage des cartes de la main
 - [ ] Blocage de l'ajout en main si 7 cartes présentes
-- [ ] Livret de règles
+- [x] Livret de règles

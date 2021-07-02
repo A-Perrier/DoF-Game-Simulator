@@ -39,8 +39,10 @@ const Playmat = ({ player, dispatch, rounds }) => {
   }
 
   function onItemsPress() {
-    const action = { type: 'DRAW_ITEM', value: player}
-    dispatch(action)
+    if (player.hand.length < 7) {
+      const action = { type: 'DRAW_ITEM', value: player}
+      dispatch(action)
+    }
   }
 
   return ( 
