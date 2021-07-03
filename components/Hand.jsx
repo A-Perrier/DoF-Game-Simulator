@@ -35,13 +35,19 @@ const styles = StyleSheet.create({
 })
 
 
-const Hand = ({ cards }) => {
+const Hand = ({ cards, onDiscard }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [cardToShow, setCardToShow] = useState(null)
 
   function toggleCardModal ( card ) {
     cardToShow ? setCardToShow(null) : setCardToShow(card)
     setModalVisible(!modalVisible)
+  }
+
+  function handleDiscard () {
+    setModalVisible(false)
+    setCardToShow(null)
+    onDiscard()
   }
 
   return ( 
@@ -56,7 +62,7 @@ const Hand = ({ cards }) => {
       }
       </View>
       <Text style={styles.title}>Main</Text>
-      <CardModal card={cardToShow} visible={modalVisible} onPress={() => toggleCardModal (cardToShow)}/>
+      <CardModal card={cardToShow} visible={modalVisible} onPress={() => toggleCardModal (cardToShow)} discard={true} onDiscard={handleDiscard}/>
     </View>
   );
 }

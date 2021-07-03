@@ -13,7 +13,7 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [x] Pioche en touchant les paquets de cartes
 - [x] Modification de la rencontre en touchant le donjon
 - [x] Zoom en touchant une carte
-- [ ] Défaussage des cartes de la main
+- [x] Défaussage des cartes de la main
 - [ ] Passage d'une carte des rencontres à la main
 - [x] Blocage de l'ajout en main si 7 cartes présentes
 - [ ] Livret de règles

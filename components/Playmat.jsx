@@ -38,11 +38,16 @@ const Playmat = ({ player, dispatch, rounds }) => {
     }
   }
 
-  function onItemsPress() {
+  function onItemsPress () {
     if (player.hand.length < 7) {
       const action = { type: 'DRAW_ITEM', value: player}
       dispatch(action)
     }
+  }
+
+  function onDiscard (card) {
+    const action = { type: 'DISCARD', value: { player, card }}
+    dispatch(action)
   }
 
   return ( 
@@ -53,7 +58,7 @@ const Playmat = ({ player, dispatch, rounds }) => {
       </View>
       <Encounters cards={player.encounters} round={currentRound}/>
       <View style={styles.hand} >
-        <Hand cards={player.hand} />
+        <Hand cards={player.hand} onDiscard={onDiscard}/>
       </View>
     </View>
    );

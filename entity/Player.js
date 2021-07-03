@@ -26,4 +26,11 @@ export default class Player {
     }
     return this
   }
+
+  discard (toDiscard) {
+    const index = this.hand.indexOf(toDiscard)
+    this.hand.splice(index, 1)
+    
+    return this
+  }
 }

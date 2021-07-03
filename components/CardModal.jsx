@@ -1,7 +1,8 @@
 import React from 'react';
-import { Image, Modal, Pressable, StyleSheet, View } from 'react-native';
+import { Dimensions, Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const modalWidth = 210
+const screen = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   modalBackground: {
@@ -20,10 +21,21 @@ const styles = StyleSheet.create({
   cardModal: {
     height: 360,
     width: 210
+  },
+  sidePressable: {
+    position: 'absolute',
+    top: 0,
+    left: (screen.width / 2) + modalWidth + 10,
+    transform: [{translateX: -modalWidth / 2}],
+  },
+  sideText: {
+    color: '#F2A102',
+    fontFamily: 'Jomhuria',
+    fontSize: 28,
   }
 })
 
-const CardModal = ({card, visible, onPress}) => {
+const CardModal = ({card, visible, onPress, discard = false, onDiscard = null}) => {  
   return ( 
   <Modal 
     visible={visible}
@@ -34,6 +46,11 @@ const CardModal = ({card, visible, onPress}) => {
       <Pressable style={styles.pressableCardModal} onPress={onPress}>
         <Image source={card?.src} style={styles.cardModal}/>
       </Pressable>
+      { discard &&
+      <Pressable onPress={() => onDiscard(card)} style={styles.sidePressable}>
+        <Text style={styles.sideText}>Défausser la carte</Text>
+      </Pressable>
+      }
     </View>
   </Modal> 
   );

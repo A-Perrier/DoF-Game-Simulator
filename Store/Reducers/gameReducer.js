@@ -16,6 +16,8 @@ const initialState = {
 
 export function manageGame (state = initialState, action) {
   let nextState
+  let currentPlayer
+  let playersCopy
   
   switch (action.type) {
     case 'GAME_INITIALIZATION':
@@ -58,8 +60,8 @@ export function manageGame (state = initialState, action) {
   
 
     case 'DRAW_ITEM':
-      const currentPlayer = action.value
-      const playersCopy = state.players.slice()
+      currentPlayer = action.value
+      playersCopy = state.players.slice()
       middleState = {
         items: state.items
       }
@@ -79,6 +81,24 @@ export function manageGame (state = initialState, action) {
       return nextState || state
       break;
 
+
+    case 'DISCARD':
+      currentPlayer = action.value.player
+      const card = action.value.card
+
+      playersCopy = state.players.slice()
+      playersCopy.map(player => {
+        if (player === currentPlayer) {
+          player.discard(card)
+        }
+      })
+
+      nextState = {
+        ... state,
+        players: playersCopy
+      }
+
+      return nextState || state
     default:
       return state
       break;
