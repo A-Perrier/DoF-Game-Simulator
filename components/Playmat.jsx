@@ -50,13 +50,18 @@ const Playmat = ({ player, dispatch, rounds }) => {
     dispatch(action)
   }
 
+  function onCardToHand (card) {
+    const action = { type: 'SWITCH_TO_HAND', value: { player, card }}
+    dispatch(action)
+  }
+
   return ( 
     <View style={styles.playmat}>
       <View style={styles.decks}>
         <DungeonDeck onPress={onDungeonPress}/>
         <ItemsDeck onPress={onItemsPress}/>
       </View>
-      <Encounters cards={player.encounters} round={currentRound}/>
+      <Encounters cards={player.encounters} round={currentRound} onCardToHand={onCardToHand}/>
       <View style={styles.hand} >
         <Hand cards={player.hand} onDiscard={onDiscard}/>
       </View>

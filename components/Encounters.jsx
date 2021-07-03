@@ -20,8 +20,13 @@ const styles = StyleSheet.create({
   }
 })
 
-const Encounters = ({ cards, round }) => {
+const Encounters = ({ cards, round, onCardToHand }) => {
   const [modalVisible, setModalVisible] = useState(false)
+
+  function handleCardToHand (card) {
+    setModalVisible(false)
+    onCardToHand(card)
+  }
 
   return ( 
     <View style={{flex: 1, alignItems: 'center'}}>
@@ -31,7 +36,13 @@ const Encounters = ({ cards, round }) => {
         </Pressable>
       <Text style={styles.title}>Rencontres</Text>
       </View>
-      <CardModal card={cards[round - 1]} visible={modalVisible} onPress={() => setModalVisible(false)}/>
+      <CardModal 
+        card={cards[round - 1]} 
+        visible={modalVisible} 
+        onPress={() => setModalVisible(false)}
+        cardToHand={true}
+        onCardToHand={handleCardToHand}
+      />
     </View>
    );
 }

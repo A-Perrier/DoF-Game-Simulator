@@ -84,7 +84,7 @@ export function manageGame (state = initialState, action) {
 
     case 'DISCARD':
       currentPlayer = action.value.player
-      const card = action.value.card
+      let card = action.value.card
 
       playersCopy = state.players.slice()
       playersCopy.map(player => {
@@ -97,8 +97,26 @@ export function manageGame (state = initialState, action) {
         ... state,
         players: playersCopy
       }
-
       return nextState || state
+
+
+    case 'SWITCH_TO_HAND':
+      currentPlayer = action.value.player
+      card = action.value.card
+
+      playersCopy = state.players.slice()
+      playersCopy.map(player => {
+        if (player === currentPlayer) {
+          player.switchToHand(card)
+        }
+      })
+
+      nextState = {
+        ... state,
+        players: playersCopy
+      }
+      return nextState || state
+
     default:
       return state
       break;

@@ -62,7 +62,13 @@ const Hand = ({ cards, onDiscard }) => {
       }
       </View>
       <Text style={styles.title}>Main</Text>
-      <CardModal card={cardToShow} visible={modalVisible} onPress={() => toggleCardModal (cardToShow)} discard={true} onDiscard={handleDiscard}/>
+      <CardModal 
+        card={cardToShow} 
+        visible={modalVisible} 
+        onPress={() => toggleCardModal (cardToShow)} 
+        discard={true} 
+        onDiscard={handleDiscard}
+      />
     </View>
   );
 }

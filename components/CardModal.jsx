@@ -35,7 +35,15 @@ const styles = StyleSheet.create({
   }
 })
 
-const CardModal = ({card, visible, onPress, discard = false, onDiscard = null}) => {  
+const CardModal = ({
+  card, 
+  visible, 
+  onPress, 
+  discard = false, 
+  onDiscard = null,
+  cardToHand = false,
+  onCardToHand = null
+}) => {  
   return ( 
   <Modal 
     visible={visible}
@@ -50,6 +58,12 @@ const CardModal = ({card, visible, onPress, discard = false, onDiscard = null}) 
       <Pressable onPress={() => onDiscard(card)} style={styles.sidePressable}>
         <Text style={styles.sideText}>Défausser la carte</Text>
       </Pressable>
+      }
+      {
+        cardToHand &&
+        <Pressable onPress={() => onCardToHand(card)} style={styles.sidePressable}>
+          <Text style={styles.sideText}>Placer dans la main</Text>
+        </Pressable>
       }
     </View>
   </Modal> 

@@ -27,10 +27,18 @@ export default class Player {
     return this
   }
 
-  discard (toDiscard) {
-    const index = this.hand.indexOf(toDiscard)
+  discard (card) {
+    const index = this.hand.indexOf(card)
     this.hand.splice(index, 1)
     
+    return this
+  }
+
+  switchToHand (card) {
+    const index = this.encounters.indexOf(card)
+    this.encounters.splice(index, 1)
+    this.hand.push(card)
+
     return this
   }
 }
