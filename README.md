@@ -4,7 +4,7 @@ Ce projet est une version numérique du jeu de cartes de Mens Sana Games.
 Cette application n'est en aucun cas un jeu, mais un support de pioche et de consultation des cartes et du plateau de jeu.
 
 
-## Fonctionnalités
+## Fonctionnalités MVP
 - [x] Sélection du nombre de joueurs
 - [x] Insertion du nom de chaque joueur
 - [x] Sélection du nombre de rounds
@@ -17,3 +17,9 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [x] Passage d'une carte des rencontres à la main
 - [x] Blocage de l'ajout en main si 7 cartes présentes
 - [ ] Livret de règles
+
+## Fonctionnalités secondaires
+- [ ] Navigation entre les différentes cartes rencontres révélées
+- [ ] Passage de la main aux rencontres (si fausse manipulation)
+- [ ] Afficher le donjon vide s'il n'y a plus de cartes dedans
+- [ ] S'il n'y a qu'un joueur, enlever les cartes multijoueur

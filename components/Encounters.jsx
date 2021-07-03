@@ -32,7 +32,7 @@ const Encounters = ({ cards, round, onCardToHand }) => {
     <View style={{flex: 1, alignItems: 'center'}}>
       <View style={{width: 68}}>
         <Pressable style={styles.pressableCard} onPress={() => setModalVisible(true)}>
-          <Image source={cards[round - 1].src} style={styles.card}/>
+          <Image source={cards[round - 1]?.src} style={styles.card}/>
         </Pressable>
       <Text style={styles.title}>Rencontres</Text>
       </View>

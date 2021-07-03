@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux'
+import RuleBook from './RuleBook';
 
 
 const styles = StyleSheet.create({
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 15,
     marginBottom: -4
-  }
+  },
 })
 
 const Tabs = createBottomTabNavigator()
@@ -63,6 +64,7 @@ const Game = ({ playersFromApp, roundsFromApp, players, dispatch }) => {
 
   return (
   <View style={styles.gameContainer}>
+    <RuleBook />
     <NavigationContainer>
       <Tabs.Navigator
         style={styles.tabbar} 
