@@ -1,5 +1,6 @@
-import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import CardModal from './CardModal';
 
 const styles = StyleSheet.create({
   pressableCard: {
@@ -20,14 +21,17 @@ const styles = StyleSheet.create({
 })
 
 const Encounters = ({ cards, round }) => {
+  const [modalVisible, setModalVisible] = useState(false)
+
   return ( 
     <View style={{flex: 1, alignItems: 'center'}}>
       <View style={{width: 68}}>
-      <Pressable style={styles.pressableCard}>
-        <Image source={cards[round - 1].src} style={styles.card}/>
-      </Pressable>
+        <Pressable style={styles.pressableCard} onPress={() => setModalVisible(true)}>
+          <Image source={cards[round - 1].src} style={styles.card}/>
+        </Pressable>
       <Text style={styles.title}>Rencontres</Text>
       </View>
+      <CardModal card={cards[round - 1]} visible={modalVisible} onPress={() => setModalVisible(false)}/>
     </View>
    );
 }

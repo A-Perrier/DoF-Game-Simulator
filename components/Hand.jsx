@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Pressable, Image, StyleSheet } from 'react-native';
+import CardModal from './CardModal';
 
 const styles = StyleSheet.create({
   handContainer: {
@@ -35,19 +36,27 @@ const styles = StyleSheet.create({
 
 
 const Hand = ({ cards }) => {
-  
+  const [modalVisible, setModalVisible] = useState(false)
+  const [cardToShow, setCardToShow] = useState(null)
+
+  function toggleCardModal ( card ) {
+    cardToShow ? setCardToShow(null) : setCardToShow(card)
+    setModalVisible(!modalVisible)
+  }
+
   return ( 
     <View style={styles.handContainer}>
       <View style={styles.hand}>
       {
         cards.map((card, index) =>
-          <Pressable key={index} style={styles.pressableCard}>
+          <Pressable key={index} style={styles.pressableCard} onPress={() => toggleCardModal (card)}>
             <Image source={card.src} style={styles.card}/>
           </Pressable>
         )
       }
       </View>
       <Text style={styles.title}>Main</Text>
+      <CardModal card={cardToShow} visible={modalVisible} onPress={() => toggleCardModal (cardToShow)}/>
     </View>
   );
 }
