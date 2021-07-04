@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Modal, Pressable } from 'react-native';
+import { Modal } from 'react-native';
 import CardModalView from './CardModalView';
-import { LeftArrow, RightArrow } from './Navigation/Arrows';
+import { LeftArrow, RightArrow } from './Helpers/Arrows';
 
 
 const CardModalWithNavigation = ({

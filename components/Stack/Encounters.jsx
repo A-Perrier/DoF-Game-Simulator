@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import CardModalWithNavigation from './CardModalWithNavigation';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import CardModalWithNavigation from '../CardModalWithNavigation';
 
 const styles = StyleSheet.create({
   pressableCard: {
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Encounters = ({ cards, round, onCardToHand, onCardToAllies }) => {
+const Encounters = ({ cards, onCardToHand, onCardToAllies }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   function handleCardToHand (card) {

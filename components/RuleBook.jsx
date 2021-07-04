@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dimensions, Image, ImageBackground, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Article, Section, P, H1, H2, H3, Strong, Li, Br } from './HTMLElements'
+import { Article, Section, P, H1, H2, H3, Strong, Li, Br } from './Helpers/HTMLElements'
 
 const screen = Dimensions.get('window')
 const rulesWindow = { 

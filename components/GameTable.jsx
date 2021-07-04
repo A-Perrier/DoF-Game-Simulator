@@ -66,4 +66,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(GameTable);
-//export default GameTable;

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import DungeonDeck from './DungeonDeck';
-import Encounters from './Encounters';
-import Hand from './Hand';
-import ItemsDeck from './ItemsDeck';
-import Allies from './Allies';
+import { StyleSheet, View } from 'react-native';
+import DungeonDeck from './Stack/DungeonDeck';
+import Encounters from './Stack/Encounters';
+import Hand from './Stack/Hand';
+import ItemsDeck from './Stack/ItemsDeck';
+import Allies from './Stack/Allies';
 import { connect } from 'react-redux'
-import { round } from 'react-native-reanimated';
 
 const styles = StyleSheet.create({
   playmat: {
@@ -96,7 +95,6 @@ const Playmat = ({ player, dispatch, rounds }) => {
       </View>
       <Encounters 
         cards={cardsRevealed} 
-        round={currentRound} 
         onCardToHand={onCardToHand}
         onCardToAllies={onCardToAllies}
       />
@@ -118,4 +116,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Playmat);
-//export default Playmat;

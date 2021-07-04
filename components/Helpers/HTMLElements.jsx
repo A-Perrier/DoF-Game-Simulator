@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     paddingBottom: -10,
     paddingLeft: 5,
     paddingRight: 5,
-    //textAlign: 'center',
     color: 'white',
     fontFamily: 'Jomhuria',
     fontSize: 36,
@@ -37,7 +36,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Jomhuria',
     fontSize: 24,
-    //textAlign: "left",
   },
   Strong: {
     color: '#F2A102',
@@ -46,7 +44,6 @@ const styles = StyleSheet.create({
   },
   Li: {
     color: 'white',
-    // textAlign: 'left',
     marginLeft: 20,
     paddingBottom: 10
   },

@@ -20,15 +20,15 @@ const styles = StyleSheet.create({
   }
 })
 
-const DungeonDeck = ({ onPress }) => {
+const ItemsDeck = ({ onPress }) => {
   return ( 
     <View style={{marginRight: 10}}>
       <Pressable style={styles.deckContainer} onPress={onPress}>
-        <Image source={require('../assets/cards/back-encounter.png')} style={styles.deck}/>
+        <Image source={require('../../assets/cards/back-item.png')} style={styles.deck}/>
       </Pressable>
-      <Text style={styles.title}>Donjon</Text>
+      <Text style={styles.title}>Objets</Text>
     </View>
   );
 }
  
-export default DungeonDeck;
+export default ItemsDeck;

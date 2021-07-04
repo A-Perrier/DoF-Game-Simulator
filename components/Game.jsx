@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
 const Tabs = createBottomTabNavigator()
 
-const Game = ({ playersFromApp, roundsFromApp, players, dispatch }) => {
+const Game = ({ playersFromApp, roundsFromApp, dispatch }) => {
   const nbTables = (playersFromApp.length - 2) > 0 ? 2 : 1
   
   // On initialise les cartes de départ, les joueurs et leur donjon/items
