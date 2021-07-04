@@ -114,6 +114,13 @@ const RuleBook = () => {
                   <P>
                     Un MONSTRE possède des points de vie, une description, un malus et une icône indiquant le nombre de cartes récompenses en haut à droite.
                   </P>
+                  <H3>Hordes</H3>
+                  <P>
+                    Les HORDES sont l'avant-dernière RENCOTNRE faite par les joueurs pendant une partie. La HORDE n'est pas un MONSTRE. Les effets de cartes fonctionnant contre les cartes MONSTRES (Shaker Poison par ex.) ne fonctionnent pas contre les HORDES.
+                  </P>
+                  <P>
+                    Les HORDES ont un nombre de PV qui correspond au nombre de joueurs qui participent à la partie (sans tenir compte des alliances entre joueurs ou des Alliés)
+                  </P>
                   <H3>Boss</H3>
                   <P>
                     Un BOSS est une RENCONTRE représentant le défi ultime du donjon.
@@ -140,6 +147,58 @@ const RuleBook = () => {
                     Il a des effets et des conditions d’utilisation particulières.
                   </P>
                 </Section>
+              </Article>
+
+              <Article>
+                <H2 alignCenter>Règle de coopération : les Partenaires</H2>
+                <P>
+                  Pumping Hordes introduit une difficulté croissante en fonction du nombre de joueurs. La coopération peut être la clef de la réussite.
+                </P>
+                <P>
+                  Les joueurs ont la liberté de se porter assistance à chaque tour, ils deviennent alors des Partenaires pendant 1 tour. La décision de prêter assistance doit être prise après avoir révélé une carte RENCONTRE et avant de jouer la carte BONUS. Les Partenaires négocient comme ils le souhaitent le partage des récompenses de la RENCONTRE.
+                </P>
+                <P>
+                  Les Partenaires portant assistance à un autre joueur doivent aussi effectuer le MALUS de la RENCONTRE sur laquelle ils interviennent, en intégralité, avant le combat tout comme le joueur assisté.
+                </P>
+                <P>
+                  Les Partenaires peuvent utiliser des ARMES nécessitant 2 joueurs pendant le combat.
+                </P>
+                <P>
+                  Les Partenaires portant assistance peuvent utiliser une ou plusieurs AMELIORATIONS de leur propre inventaire et effectuer les exercices pour renforcer les attaques du joueur qui reçoit l'assistance.
+                </P>
+                <P>
+                  Les Partenaires portant assistance ne peuvent pas utiliser d'ARME et doivent utiliser des AMELIORATIONS de leur inventaire. S'ils n'ont pas d'amélioration ou d'arme à 2 joueurs, ils ne peuvent porter assistance.
+                </P>
+                <P>
+                  Les joueurs et son/sa/ses Partenaires doivent effectuer les exercices en même temps. Le joueur recevant assistance peut aussi utiliser des AMELIORATIONS.
+                </P>
+                <P>
+                  <Strong>Note : </Strong>
+                  Contre le BOSS "Macaron le Roi", les exercices à 2 joueurs ne sont pas concernés.
+                </P>
+              </Article>
+
+              <Article>
+                <H2 alignCenter>Les cartes Allié</H2>
+                <P>
+                  Depuis Pumping Hordes, il est possible d'avoir des cartes Allié dans son inventaire.
+                </P>
+                <P>
+                  Un Allié peut être permanent ou à usage unique. Il peut être une carte OBJET ou une carte RENCONTRE recrutée grâce aux effets de certaines cartes Spéciales et Objets. Lorsqu'une RENCONTRE est recrutée, elle ne permet pas de récupérer de récompense.
+                </P>
+                <P>
+                  Un Allié produit des effets lors d'un combat, il peut :
+                  <Li>Retirer des PV à un MONSTRE ou à une HORDE.</Li>
+                  <Li>
+                    Donner un bonus de temps au chronomètre ou de l'avance contre le BOSS
+                  </Li>
+                  <Li>
+                    Être joué contre un autre joueur, il est alors considéré comme une RENCONTRE supplémentaire imposée à un autre joueur, lors de n'importe quelle RENCONTRE sauf le BOSS.
+                  </Li>
+                </P>
+                <P>
+                  Ces effets figurent directement sur la carte Allié ou sur la carte qui a permis le recrutement.
+                </P>
               </Article>
 
               <Article>
@@ -232,10 +291,19 @@ const RuleBook = () => {
                     Le joueur ayant terrassé le BOSS en premier est le champion. Si un joueur le souhaite, il a le droit de tenter de l’affronter pour revendiquer son titre. Le même malus que le BOSS vaincu est infligé aux joueurs attaquants et les règles de la BASTON sont appliquées ensuite.
                   </P>
 
-                  <P>Le joueur vainqueur devient le champion et les autres sont définitivement éliminés de la partie.</P>
+                  <P>
+                    Le joueur vainqueur devient le champion et les autres sont définitivement éliminés de la partie.
+                  </P>
 
                   <P>
                     La partie prend fin quand tous les joueurs sont éliminés ou qu’ils choisissent de ne pas affronter le champion.
+                  </P>
+                </Section>
+
+                <Section>
+                  <H3>Victoire des Partenaires : comment départager ?</H3>
+                  <P>
+                    Si 2 Partenaires ou plus battent le BOSS ensemble et remportent la victoire, il ne peut en rester qu'un. La règle BASTON s'applique automatiquement afin de les départager. Les autres joueurs ne peuvent participer à cette BASTON. Le gagnant de celle-ci peut être défié selon les règles du jeu de base.
                   </P>
                 </Section>
               </Article>

@@ -23,3 +23,4 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [ ] Passage de la main aux rencontres (si fausse manipulation)
 - [ ] Afficher le donjon vide s'il n'y a plus de cartes dedans
 - [ ] S'il n'y a qu'un joueur, enlever les cartes multijoueur
+- [ ] Gérer la carte LE MAGICIEN
