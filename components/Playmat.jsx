@@ -41,6 +41,10 @@ const Playmat = ({ player, dispatch, rounds }) => {
     getRevealed()
   }, [currentRound])
   
+
+  /**
+   * Permet de garder une trace de l'historique des cartes dans la pile rencontres
+   */
   function getRevealed () {
     let revealed = []
     for (let i = 0; i < currentRound; i++) {
@@ -50,7 +54,7 @@ const Playmat = ({ player, dispatch, rounds }) => {
   }
 
   function onDungeonPress () {
-    if (rounds > currentRound) {
+    if (rounds > currentRound && player.encounters.length > 0) {
       setCurrentRound(currentRound + 1)
       getRevealed()
     }
