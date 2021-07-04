@@ -34,7 +34,6 @@ export function manageGame (state = initialState, action) {
         middleState.encounters.removeMulti()
         middleState.items.removeMulti()
       }
-      console.log('Longueur objets:', middleState.items.cards.length)
 
       // Phase de création des joueurs et pioche initiale
       let players = []
@@ -92,11 +91,12 @@ export function manageGame (state = initialState, action) {
     case 'DISCARD':
       currentPlayer = action.value.player
       let card = action.value.card
+      let source = action.value.source
 
       playersCopy = state.players.slice()
       playersCopy.map(player => {
         if (player === currentPlayer) {
-          player.discard(card)
+          player.discard(card, source)
         }
       })
 
@@ -124,6 +124,7 @@ export function manageGame (state = initialState, action) {
       }
       return nextState || state
 
+      
     case 'SWITCH_TO_ALLIES':
       currentPlayer = action.value.player
       card = action.value.card

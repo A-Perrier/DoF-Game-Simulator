@@ -45,7 +45,10 @@ const CardModal = ({
   onCardToHand = null,
   cardToAllies = false,
   onCardToAllies = null
-}) => {  
+}) => {
+
+  
+
   return ( 
   <Modal 
     visible={visible}

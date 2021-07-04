@@ -28,9 +28,9 @@ export default class Player {
     return this
   }
 
-  discard (card) {
-    const index = this.hand.indexOf(card)
-    this.hand.splice(index, 1)
+  discard (card, source) {
+    const index = this[source].indexOf(card)
+    this[source].splice(index, 1)
     
     return this
   }

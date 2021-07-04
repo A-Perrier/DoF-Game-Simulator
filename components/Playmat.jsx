@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import DungeonDeck from './DungeonDeck';
 import Encounters from './Encounters';
@@ -35,10 +35,24 @@ const styles = StyleSheet.create({
 
 const Playmat = ({ player, dispatch, rounds }) => {
   const [currentRound, setCurrentRound] = useState(1)
+  const [cardsRevealed, setCardsRevealed] = useState([])
+
+  useEffect(() => {
+    getRevealed()
+  }, [currentRound])
+  
+  function getRevealed () {
+    let revealed = []
+    for (let i = 0; i < currentRound; i++) {
+      revealed.unshift(player.encounters[i])
+    }
+    setCardsRevealed(revealed)
+  }
 
   function onDungeonPress () {
     if (rounds > currentRound) {
       setCurrentRound(currentRound + 1)
+      getRevealed()
     }
   }
 
@@ -49,18 +63,24 @@ const Playmat = ({ player, dispatch, rounds }) => {
     }
   }
 
-  function onDiscard (card) {
-    const action = { type: 'DISCARD', value: { player, card }}
+  function onDiscard (card, source) {
+    const action = { type: 'DISCARD', value: { player, card, source }}
     dispatch(action)
   }
 
   function onCardToHand (card) {
+    const copy = cardsRevealed.slice()
+    setCardsRevealed(copy.filter(cardCopy => cardCopy !== card))
+
     const action = { type: 'SWITCH_TO_HAND', value: { player, card }}
     dispatch(action)
   }
 
   function onCardToAllies (card) {
-    const action = { type: 'SWITCH_TO_ALLIES', value: {player, card }}
+    const copy = cardsRevealed.slice()
+    setCardsRevealed(copy.filter(cardCopy => cardCopy !== card))
+
+    const action = { type: 'SWITCH_TO_ALLIES', value: { player, card }}
     dispatch(action)
   }
 
@@ -71,13 +91,13 @@ const Playmat = ({ player, dispatch, rounds }) => {
         <ItemsDeck onPress={onItemsPress}/>
       </View>
       <Encounters 
-        cards={player.encounters} 
+        cards={cardsRevealed} 
         round={currentRound} 
         onCardToHand={onCardToHand}
         onCardToAllies={onCardToAllies}
       />
       <View style={styles.allies}>
-        <Allies cards={player.allies} />
+        <Allies cards={player.allies} onDiscard={onDiscard}/>
       </View>
       <View style={styles.hand} >
         <Hand cards={player.hand} onDiscard={onDiscard}/>

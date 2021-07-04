@@ -44,10 +44,10 @@ const Hand = ({ cards, onDiscard }) => {
     setModalVisible(!modalVisible)
   }
 
-  function handleDiscard () {
+  function handleDiscard (card) {
     setModalVisible(false)
     setCardToShow(null)
-    onDiscard()
+    onDiscard(card, 'hand')
   }
 
   return ( 
