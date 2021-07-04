@@ -12,6 +12,7 @@ import Store from './Store/ConfigureStore';
 
 LogBox.ignoreLogs(['Remote debugger'])
 LogBox.ignoreLogs(['Failed prop type'])
+LogBox.ignoreLogs(['If you want to use'])
 
 export default function App () {
   let [fontsLoaded] = useFonts({

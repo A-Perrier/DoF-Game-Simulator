@@ -53,11 +53,19 @@ const styles = StyleSheet.create({
   LiPrependIcon: {
     fontSize: 12,
     paddingRight: 20,
-    color: 'red'
+    color: '#F2A102'
   }
 })
 
-export const H1 = ({children, alignCenter = false}) => {
+export const Article = ({children}) => {
+  return <>{children}</>
+}
+
+export const Section = ({children}) => {
+  return <>{children}</>
+}
+
+export const H1 = ({children, alignCenter = true}) => {
   return (
     <Text style={[styles.H1, {textAlign: alignCenter ? 'center' : 'left'}]}>{children}</Text>
   );
