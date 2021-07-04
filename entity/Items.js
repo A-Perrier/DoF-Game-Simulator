@@ -40,11 +40,13 @@ export default class Items extends Deck {
     },
     { 
       name: "Bouclier géant",
-      src: require('../assets/cards/items/Bouclier-geant-1.png')
+      src: require('../assets/cards/items/Bouclier-geant-1.png'),
+      multiplayer: true
     },
     { 
       name: "Bouclier géant",
-      src: require('../assets/cards/items/Bouclier-geant-2.png')
+      src: require('../assets/cards/items/Bouclier-geant-2.png'),
+      multiplayer: true
     },
     { 
       name: "Boule de force",
@@ -92,7 +94,8 @@ export default class Items extends Deck {
     },
     { 
       name: "Excalibrute",
-      src: require('../assets/cards/items/Excalibrute.png')
+      src: require('../assets/cards/items/Excalibrute.png'),
+      multiplayer: true
     },
     { 
       name: "Fléau de guerre",
@@ -120,11 +123,13 @@ export default class Items extends Deck {
     },
     { 
       name: "Hallebarde géante",
-      src: require('../assets/cards/items/Hallebarde-geante-1.png')
+      src: require('../assets/cards/items/Hallebarde-geante-1.png'),
+      multiplayer: true
     },
     { 
       name: "Hallebarde géante",
-      src: require('../assets/cards/items/Hallebarde-geante-2.png')
+      src: require('../assets/cards/items/Hallebarde-geante-2.png'),
+      multiplayer: true
     },
     { 
       name: "Haltères",
@@ -136,7 +141,8 @@ export default class Items extends Deck {
     },
     { 
       name: "Igor",
-      src: require('../assets/cards/items/Igor.png')
+      src: require('../assets/cards/items/Igor.png'),
+      multiplayer: true
     },
     { 
       name: "L'arc de la fée",
@@ -232,7 +238,8 @@ export default class Items extends Deck {
     },
     { 
       name: "Shaker persuasion",
-      src: require('../assets/cards/items/Shaker-persuasion.png')
+      src: require('../assets/cards/items/Shaker-persuasion.png'),
+      multiplayer: true
     },
     { 
       name: "Shaker poison",
@@ -252,7 +259,8 @@ export default class Items extends Deck {
     },
     { 
       name: "Talisman",
-      src: require('../assets/cards/items/Talisman.png')
+      src: require('../assets/cards/items/Talisman.png'),
+      multiplayer: true
     }
   ]
 }

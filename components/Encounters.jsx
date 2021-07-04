@@ -20,12 +20,17 @@ const styles = StyleSheet.create({
   }
 })
 
-const Encounters = ({ cards, round, onCardToHand }) => {
+const Encounters = ({ cards, round, onCardToHand, onCardToAllies }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   function handleCardToHand (card) {
     setModalVisible(false)
     onCardToHand(card)
+  }
+
+  function handleCardToAllies (card) {
+    setModalVisible(false)
+    onCardToAllies(card)
   }
 
   return ( 
@@ -42,6 +47,8 @@ const Encounters = ({ cards, round, onCardToHand }) => {
         onPress={() => setModalVisible(false)}
         cardToHand={true}
         onCardToHand={handleCardToHand}
+        cardToAllies={true}
+        onCardToAllies={handleCardToAllies}
       />
     </View>
    );

@@ -44,15 +44,28 @@ export default class ClassicEncounters extends Deck {
   },
   { 
     name: "Comte Nosferathon",
-    src: require('../assets/cards/rencontres/Comte-Nosferathon.png')
+    src: require('../assets/cards/rencontres/Comte-Nosferathon.png'),
+    //effects: [
+    //  { 
+    //    name: 'MOVE_TO_ALLIES',
+    //    text: 'Déplacer dans la zone Alliés'  
+    //  }
+    //]
   },
   { 
     name: "Gardes de Fitland",
-    src: require('../assets/cards/rencontres/Gardes-de-fitland.png')
+    src: require('../assets/cards/rencontres/Gardes-de-fitland.png'),
+    //effects: [
+    //  { 
+    //    name: 'MOVE_TO_ALLIES',
+    //    text: 'Déplacer dans la zone Alliés'  
+    //  }
+    //]
   },
   { 
     name: "La fée",
-    src: require('../assets/cards/rencontres/La-fee.png')
+    src: require('../assets/cards/rencontres/La-fee.png'),
+    multiplayer: true
   },
   { 
     name: "Le Magicien",

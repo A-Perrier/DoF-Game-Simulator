@@ -59,13 +59,23 @@ const Playmat = ({ player, dispatch, rounds }) => {
     dispatch(action)
   }
 
+  function onCardToAllies (card) {
+    const action = { type: 'SWITCH_TO_ALLIES', value: {player, card }}
+    dispatch(action)
+  }
+
   return ( 
     <View style={styles.playmat}>
       <View style={styles.decks}>
         <DungeonDeck onPress={onDungeonPress}/>
         <ItemsDeck onPress={onItemsPress}/>
       </View>
-      <Encounters cards={player.encounters} round={currentRound} onCardToHand={onCardToHand}/>
+      <Encounters 
+        cards={player.encounters} 
+        round={currentRound} 
+        onCardToHand={onCardToHand}
+        onCardToAllies={onCardToAllies}
+      />
       <View style={styles.allies}>
         <Allies cards={player.allies} />
       </View>

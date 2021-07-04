@@ -3,14 +3,7 @@ export default class Player {
   name = ""
   hand = []
   encounters = []
-  allies = [{ 
-    name: "Arbalete de Fitland",
-    src: require('../assets/cards/items/Arbalete-de-fitland-1.png')
-  },
-  { 
-    name: "Arbalete de Fitland",
-    src: require('../assets/cards/items/Arbalete-de-fitland-2.png')
-  },]
+  allies = []
 
   constructor (name, id) {
     this.name = name
@@ -46,6 +39,14 @@ export default class Player {
     const index = this.encounters.indexOf(card)
     this.encounters.splice(index, 1)
     this.hand.push(card)
+
+    return this
+  }
+
+  switchToAllies (card) {
+    const index = this.encounters.indexOf(card)
+    this.encounters.splice(index, 1)
+    this.allies.push(card)
 
     return this
   }

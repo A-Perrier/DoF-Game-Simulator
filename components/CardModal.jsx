@@ -42,7 +42,9 @@ const CardModal = ({
   discard = false, 
   onDiscard = null,
   cardToHand = false,
-  onCardToHand = null
+  onCardToHand = null,
+  cardToAllies = false,
+  onCardToAllies = null
 }) => {  
   return ( 
   <Modal 
@@ -54,17 +56,27 @@ const CardModal = ({
       <Pressable style={styles.pressableCardModal} onPress={onPress}>
         <Image source={card?.src} style={styles.cardModal}/>
       </Pressable>
-      { discard &&
-      <Pressable onPress={() => onDiscard(card)} style={styles.sidePressable}>
-        <Text style={styles.sideText}>Défausser la carte</Text>
-      </Pressable>
-      }
-      {
-        cardToHand &&
-        <Pressable onPress={() => onCardToHand(card)} style={styles.sidePressable}>
-          <Text style={styles.sideText}>Placer dans la main</Text>
-        </Pressable>
-      }
+      <View style={styles.sidePressable}>
+        { 
+          discard &&
+          <Pressable onPress={() => onDiscard(card)}>
+            <Text style={styles.sideText}>Défausser la carte</Text>
+          </Pressable>
+        }
+        {
+          cardToHand &&
+          <Pressable onPress={() => onCardToHand(card)}>
+            <Text style={styles.sideText}>Placer dans la main</Text>
+          </Pressable>
+        }
+        {
+          cardToAllies &&
+          <Pressable onPress={() => onCardToAllies(card)}>
+            <Text style={styles.sideText}>Déplacer en zone Alliée</Text>
+          </Pressable>
+        }
+        
+      </View>
     </View>
   </Modal> 
   );

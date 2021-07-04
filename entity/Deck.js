@@ -22,4 +22,12 @@ export default class Deck {
 
     return cards
   }
+
+
+  removeMulti () {
+    let filtered = this.cards.filter(card => card.multiplayer !== true)
+    this.cards = filtered
+
+    return this
+  }
 }

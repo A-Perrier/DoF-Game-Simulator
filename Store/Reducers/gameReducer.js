@@ -29,6 +29,13 @@ export function manageGame (state = initialState, action) {
         items: state.items.shuffle()
       }
 
+
+      if (action.value.playersFromApp.length === 1) {
+        middleState.encounters.removeMulti()
+        middleState.items.removeMulti()
+      }
+      console.log('Longueur objets:', middleState.items.cards.length)
+
       // Phase de création des joueurs et pioche initiale
       let players = []
       const regularEncounters = action.value.roundsFromApp - 2
@@ -108,6 +115,23 @@ export function manageGame (state = initialState, action) {
       playersCopy.map(player => {
         if (player === currentPlayer) {
           player.switchToHand(card)
+        }
+      })
+
+      nextState = {
+        ... state,
+        players: playersCopy
+      }
+      return nextState || state
+
+    case 'SWITCH_TO_ALLIES':
+      currentPlayer = action.value.player
+      card = action.value.card
+
+      playersCopy = state.players.slice()
+      playersCopy.map(player => {
+        if (player === currentPlayer) {
+          player.switchToAllies(card)
         }
       })
 
