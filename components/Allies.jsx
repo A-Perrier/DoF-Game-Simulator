@@ -3,10 +3,10 @@ import { Text, View, Pressable, Image, StyleSheet } from 'react-native';
 import CardModal from './CardModal';
 
 const styles = StyleSheet.create({
-  handContainer: {
+  alliesContainer: {
     flexDirection: 'column',
   },
-  hand: {
+  allies: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     maxHeight: 108,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Hand = ({ cards, onDiscard }) => {
+const Allies = ({ cards, onDiscard }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [cardToShow, setCardToShow] = useState(null)
 
@@ -51,8 +51,8 @@ const Hand = ({ cards, onDiscard }) => {
   }
 
   return ( 
-    <View style={styles.handContainer}>
-      <View style={styles.hand}>
+    <View style={styles.alliesContainer}>
+      <View style={styles.allies}>
       {
         cards.map((card, index) =>
           <Pressable key={index} style={styles.pressableCard} onPress={() => toggleCardModal (card)}>
@@ -61,7 +61,7 @@ const Hand = ({ cards, onDiscard }) => {
         )
       }
       </View>
-      <Text style={styles.title}>Main</Text>
+      <Text style={styles.title}>Alliés</Text>
       <CardModal 
         card={cardToShow} 
         visible={modalVisible} 
@@ -73,4 +73,4 @@ const Hand = ({ cards, onDiscard }) => {
   );
 }
  
-export default Hand;
+export default Allies;

@@ -80,7 +80,7 @@ const RuleBook = () => {
                     Elle est déjà faite sur cette application !
                     Vous trouverez sur chaque tapis de jeu :
                     <Li>
-                      - Un paquet "Donjon". Constitué d'une quantité de cartes qui correspond au nombre de rounds indiqué avant la partie. Tapez dessus pour piocher une rencontre. C'est un paquet individuel, qui vous a été attribué au hasard parmi toutes les cartes que comprend le jeu DUNGEON OF FITNESS et son extension PUMPING HORDES. Lors de la répartition des cartes, tous les joueurs les ont piochées depuis le même paquet. Ainsi, l'application respecte la quantité d'exemplaires contenus dans le jeu de base.
+                      Un paquet "Donjon". Constitué d'une quantité de cartes qui correspond au nombre de rounds indiqué avant la partie. Tapez dessus pour piocher une rencontre. C'est un paquet individuel, qui vous a été attribué au hasard parmi toutes les cartes que comprend le jeu DUNGEON OF FITNESS et son extension PUMPING HORDES. Lors de la répartition des cartes, tous les joueurs les ont piochées depuis le même paquet. Ainsi, l'application respecte la quantité d'exemplaires contenus dans le jeu de base.
                     </Li>
                     <Li>
                       Un paquet "Objets". C'est en tapant ici que vous piocherez des objets après avoir vaincu vos rencontres. C'est un paquet commun, ce qui signifie que chaque carte que vous piochez ne pourra plus être piochée par vos allié(e)s ou adversaires (sauf s'il en existe plusieurs exemplaires dans la decklist d'origine).

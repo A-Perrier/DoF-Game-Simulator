@@ -3,6 +3,14 @@ export default class Player {
   name = ""
   hand = []
   encounters = []
+  allies = [{ 
+    name: "Arbalete de Fitland",
+    src: require('../assets/cards/items/Arbalete-de-fitland-1.png')
+  },
+  { 
+    name: "Arbalete de Fitland",
+    src: require('../assets/cards/items/Arbalete-de-fitland-2.png')
+  },]
 
   constructor (name, id) {
     this.name = name

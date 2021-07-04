@@ -4,6 +4,7 @@ import DungeonDeck from './DungeonDeck';
 import Encounters from './Encounters';
 import Hand from './Hand';
 import ItemsDeck from './ItemsDeck';
+import Allies from './Allies';
 import { connect } from 'react-redux'
 import { round } from 'react-native-reanimated';
 
@@ -26,6 +27,9 @@ const styles = StyleSheet.create({
   hand: {
     flex: 1,
     transform: [{translateX: 20}]
+  },
+  allies: {
+    flex: 1
   }
 })
 
@@ -62,6 +66,9 @@ const Playmat = ({ player, dispatch, rounds }) => {
         <ItemsDeck onPress={onItemsPress}/>
       </View>
       <Encounters cards={player.encounters} round={currentRound} onCardToHand={onCardToHand}/>
+      <View style={styles.allies}>
+        <Allies cards={player.allies} />
+      </View>
       <View style={styles.hand} >
         <Hand cards={player.hand} onDiscard={onDiscard}/>
       </View>
