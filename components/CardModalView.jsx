@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 const modalWidth = 210
 const screen = Dimensions.get('window')
@@ -37,6 +38,8 @@ const styles = StyleSheet.create({
 
 
 const CardModalView = ({ 
+  currentPlayer,
+  players,
   card,
   onPress, 
   discard = false, 
@@ -44,9 +47,10 @@ const CardModalView = ({
   cardToHand = false,
   onCardToHand = null,
   cardToAllies = false,
-  onCardToAllies = null
+  onCardToAllies = null,
+  onGiveCard
  }) => {
-  
+
   return ( 
     <View style={styles.modalBackground}>
       <Pressable style={styles.pressableCardModal} onPress={onPress}> 
@@ -71,10 +75,26 @@ const CardModalView = ({
             <Text style={styles.sideText}>Déplacer en zone Alliée</Text>
           </Pressable>
         }
-        
+        {
+          players.map((player, index) => {
+            if (player !== currentPlayer) {
+              return (
+                <Pressable key={index} onPress={() => onGiveCard(card, player)}>
+                  <Text style={styles.sideText}>Donner à {player.name}</Text>
+                </Pressable>
+              )
+            }
+          })
+        }
       </View> 
     </View>
   );
 }
- 
-export default CardModalView;
+
+const mapStateToProps = (state) => {
+  return {
+    players: state.players,
+  }
+}
+
+export default connect(mapStateToProps)(CardModalView);

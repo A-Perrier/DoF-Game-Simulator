@@ -19,8 +19,8 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [x] Livret de règles
 
 ## Fonctionnalités secondaires
-- [ ] Navigation entre les différentes cartes rencontres révélées
+- [x] Navigation entre les différentes cartes rencontres révélées
 - [ ] Passage de la main aux rencontres (si fausse manipulation)
 - [ ] Afficher le donjon vide s'il n'y a plus de cartes dedans
 - [x] S'il n'y a qu'un joueur, enlever les cartes multijoueur
-- [ ] Gérer la carte LE MAGICIEN
+- [ ] Gérer des placeholders pour les piles vides

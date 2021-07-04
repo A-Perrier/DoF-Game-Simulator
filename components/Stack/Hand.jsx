@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Hand = ({ cards, onDiscard }) => {
+const Hand = ({ cards, onDiscard, onGiveCard, currentPlayer }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [cardToShow, setCardToShow] = useState(null)
 
@@ -50,6 +50,12 @@ const Hand = ({ cards, onDiscard }) => {
     onDiscard(card, 'hand')
   }
 
+  function handleGiveCard (card, target) {
+    setModalVisible(false)
+    setCardToShow(null)
+    onGiveCard(card, target, 'hand')
+  }
+
   return ( 
     <View style={styles.handContainer}>
       <View style={styles.hand}>
@@ -62,12 +68,14 @@ const Hand = ({ cards, onDiscard }) => {
       }
       </View>
       <Text style={styles.title}>Main</Text>
-      <CardModal 
+      <CardModal
+        currentPlayer={currentPlayer}
         card={cardToShow} 
         visible={modalVisible} 
         onPress={() => toggleCardModal (cardToShow)} 
         discard={true} 
         onDiscard={handleDiscard}
+        onGiveCard={handleGiveCard}
       />
     </View>
   );

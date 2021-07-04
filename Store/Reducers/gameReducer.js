@@ -18,6 +18,7 @@ export function manageGame (state = initialState, action) {
   let nextState
   let currentPlayer
   let playersCopy
+  let target
   
   switch (action.type) {
     case 'GAME_INITIALIZATION':
@@ -140,6 +141,17 @@ export function manageGame (state = initialState, action) {
         ... state,
         players: playersCopy
       }
+      return nextState || state
+
+
+    case 'GIVE_TO_PLAYER':
+      currentPlayer = action.value.player
+      target = action.value.target
+      card = action.value.card
+      source = action.value.source
+
+      console.log('Give to player ! ', currentPlayer, target, card, source)
+      
       return nextState || state
 
     default:

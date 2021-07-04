@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Encounters = ({ cards, onCardToHand, onCardToAllies }) => {
+const Encounters = ({ cards, onCardToHand, onCardToAllies, onGiveCard, currentPlayer }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   function handleCardToHand (card) {
@@ -33,6 +33,11 @@ const Encounters = ({ cards, onCardToHand, onCardToAllies }) => {
     onCardToAllies(card)
   }
 
+  function handleGiveCard (card, target) {
+    setModalVisible(false)
+    onGiveCard(card, target, 'encounters')
+  }
+
   return ( 
     <View style={{flex: 1, alignItems: 'center'}}>
       <View style={{width: 68}}>
@@ -42,6 +47,7 @@ const Encounters = ({ cards, onCardToHand, onCardToAllies }) => {
       <Text style={styles.title}>Rencontres</Text>
       </View>
       <CardModalWithNavigation
+        currentPlayer={currentPlayer}
         swipeableItems={cards}
         visible={modalVisible} 
         onPress={() => setModalVisible(false)}
@@ -49,6 +55,7 @@ const Encounters = ({ cards, onCardToHand, onCardToAllies }) => {
         onCardToHand={handleCardToHand}
         cardToAllies={true}
         onCardToAllies={handleCardToAllies}
+        onGiveCard={handleGiveCard}
       />
     </View>
    );

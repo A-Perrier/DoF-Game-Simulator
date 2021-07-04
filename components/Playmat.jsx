@@ -52,12 +52,14 @@ const Playmat = ({ player, dispatch, rounds }) => {
     setCardsRevealed(revealed)
   }
 
+
   function onDungeonPress () {
     if (rounds > currentRound && player.encounters.length > 0) {
       setCurrentRound(currentRound + 1)
       getRevealed()
     }
   }
+
 
   function onItemsPress () {
     if (player.hand.length < 7) {
@@ -66,10 +68,12 @@ const Playmat = ({ player, dispatch, rounds }) => {
     }
   }
 
+
   function onDiscard (card, source) {
     const action = { type: 'DISCARD', value: { player, card, source }}
     dispatch(action)
   }
+
 
   function onCardToHand (card) {
     const copy = cardsRevealed.slice()
@@ -79,6 +83,7 @@ const Playmat = ({ player, dispatch, rounds }) => {
     dispatch(action)
   }
 
+
   function onCardToAllies (card) {
     const copy = cardsRevealed.slice()
     setCardsRevealed(copy.filter(cardCopy => cardCopy !== card))
@@ -86,6 +91,13 @@ const Playmat = ({ player, dispatch, rounds }) => {
     const action = { type: 'SWITCH_TO_ALLIES', value: { player, card }}
     dispatch(action)
   }
+
+
+  function onGiveCard (card, target, source) {
+    const action = { type: 'GIVE_TO_PLAYER', value: { player, target, card, source} }
+    dispatch(action)
+  }
+
 
   return ( 
     <View style={styles.playmat}>
@@ -97,12 +109,14 @@ const Playmat = ({ player, dispatch, rounds }) => {
         cards={cardsRevealed} 
         onCardToHand={onCardToHand}
         onCardToAllies={onCardToAllies}
+        onGiveCard={onGiveCard} 
+        currentPlayer={player}
       />
       <View style={styles.allies}>
-        <Allies cards={player.allies} onDiscard={onDiscard}/>
+        <Allies cards={player.allies} onDiscard={onDiscard} />
       </View>
       <View style={styles.hand} >
-        <Hand cards={player.hand} onDiscard={onDiscard}/>
+        <Hand cards={player.hand} onDiscard={onDiscard} onGiveCard={onGiveCard} currentPlayer={player} />
       </View>
     </View>
    );

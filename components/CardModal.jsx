@@ -4,6 +4,7 @@ import CardModalView from './CardModalView';
 
 
 const CardModal = ({
+  currentPlayer,
   card,
   visible, 
   onPress, 
@@ -12,7 +13,8 @@ const CardModal = ({
   cardToHand = false,
   onCardToHand = null,
   cardToAllies = false,
-  onCardToAllies = null
+  onCardToAllies = null,
+  onGiveCard
 }) => {
   return ( 
   <Modal 
@@ -30,6 +32,8 @@ const CardModal = ({
         onCardToHand={onCardToHand}
         cardToAllies={cardToAllies}
         onCardToAllies={onCardToAllies}
+        onGiveCard={onGiveCard}
+        currentPlayer={currentPlayer}
       />
   </Modal> 
   );

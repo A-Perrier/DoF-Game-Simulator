@@ -5,6 +5,7 @@ import { LeftArrow, RightArrow } from './Helpers/Arrows';
 
 
 const CardModalWithNavigation = ({
+  currentPlayer,
   swipeableItems,
   visible, 
   onPress, 
@@ -13,7 +14,8 @@ const CardModalWithNavigation = ({
   cardToHand = false,
   onCardToHand = null,
   cardToAllies = false,
-  onCardToAllies = null
+  onCardToAllies = null,
+  onGiveCard
 }) => {
   const [indexToDisplay, setIndexToDisplay] = useState(0)
   const [limit, setLimit] = useState(swipeableItems.length)
@@ -52,6 +54,8 @@ const CardModalWithNavigation = ({
         onCardToHand={onCardToHand}
         cardToAllies={cardToAllies}
         onCardToAllies={onCardToAllies}
+        onGiveCard={onGiveCard}
+        currentPlayer={currentPlayer}
       />
       <RightArrow onPress={nextCard} visible={isLastCardDrew} />
   </Modal> 
