@@ -2,10 +2,10 @@ import Deck from "./Deck";
 
 export default class Bosses extends Deck {
   cards = [
-      { 
-        name: "Anabo le sec",
-        src: require('../assets/cards/rencontres/boss/Anabo-le-sec.png')
-      }, 
+      //{ 
+      //  name: "Anabo le sec",
+      //  src: require('../assets/cards/rencontres/boss/Anabo-le-sec.png')
+      //}, 
       { 
         name: "L'hydrocoolique",
         src: require('../assets/cards/rencontres/boss/L-hydrocoolique.png')

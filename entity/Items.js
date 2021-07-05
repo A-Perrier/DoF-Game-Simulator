@@ -164,10 +164,10 @@ export default class Items extends Deck {
       name: "Le barde héroïque",
       src: require('../assets/cards/items/Le-barde-heroique.png')
     },
-    { 
-      name: "Le cartographe",
-      src: require('../assets/cards/items/Le-cartographe.png')
-    },
+    //{ 
+    //  name: "Le cartographe",
+    //  src: require('../assets/cards/items/Le-cartographe.png')
+    //},
     { 
       name: "Le conteur",
       src: require('../assets/cards/items/Le-conteur.png')
