@@ -41,9 +41,15 @@ const Encounters = ({ cards, onCardToHand, onCardToAllies, onGiveCard, currentPl
   return ( 
     <View style={{flex: 1, alignItems: 'center'}}>
       <View style={{width: 68}}>
+        {
+        cards.length === 0 ?
+        <Pressable style={styles.pressableCard}>
+          <Image source={require('../../assets/placeholders/default-encounters.png')} style={styles.card}/>
+        </Pressable> : 
         <Pressable style={styles.pressableCard} onPress={() => setModalVisible(true)}>
           <Image source={cards[0]?.src} style={styles.card}/>
         </Pressable>
+        }
       <Text style={styles.title}>Rencontres</Text>
       </View>
       <CardModalWithNavigation

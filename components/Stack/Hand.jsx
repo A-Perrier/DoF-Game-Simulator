@@ -66,6 +66,12 @@ const Hand = ({ cards, onDiscard, onGiveCard, currentPlayer }) => {
           </Pressable>
         )
       }
+      {
+        cards.length === 0 ?
+        <Pressable style={styles.pressableCard}>
+          <Image source={require('../../assets/placeholders/default-hand.png')} style={styles.card}/>
+        </Pressable> : <></>
+      }
       </View>
       <Text style={styles.title}>Main</Text>
       <CardModal

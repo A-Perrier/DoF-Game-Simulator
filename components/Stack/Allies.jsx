@@ -60,6 +60,12 @@ const Allies = ({ cards, onDiscard }) => {
           </Pressable>
         )
       }
+      {
+        cards.length === 0 ?
+        <Pressable style={styles.pressableCard}>
+          <Image source={require('../../assets/placeholders/default-allies.png')} style={styles.card}/>
+        </Pressable> : <></>
+      }
       </View>
       <Text style={styles.title}>Alliés</Text>
       <CardModal 
