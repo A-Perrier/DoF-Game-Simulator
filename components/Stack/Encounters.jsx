@@ -55,6 +55,7 @@ const Encounters = ({ cards, onCardToHand, onCardToAllies, onGiveCard, currentPl
         onCardToHand={handleCardToHand}
         cardToAllies={true}
         onCardToAllies={handleCardToAllies}
+        giveCard={false}
         onGiveCard={handleGiveCard}
       />
     </View>

@@ -10,6 +10,15 @@ export default class Player {
     this.id = id
   }
 
+  addCard (card, source) {
+    this[source].push(card)
+    return this
+  }
+
+  /**
+   * card param might be a single card or an array of cards
+   * @param {object | Array} card 
+   */
   addItem (card) {
     if (Array.isArray(card)) {
       card.forEach(item => this.hand.push(item))
@@ -19,6 +28,10 @@ export default class Player {
     return this
   }
 
+  /**
+   * card param might be a single card or an array of cards
+   * @param {object | Array} card 
+   */
   addEncounters (card) {
     if (Array.isArray(card)) {
       card.forEach(item => this.encounters.push(item))
@@ -29,6 +42,13 @@ export default class Player {
   }
 
   discard (card, source) {
+    const index = this[source].indexOf(card)
+    this[source].splice(index, 1)
+    
+    return this
+  }
+
+  remove (card, source) {
     const index = this[source].indexOf(card)
     this[source].splice(index, 1)
     

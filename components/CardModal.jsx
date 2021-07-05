@@ -14,6 +14,7 @@ const CardModal = ({
   onCardToHand = null,
   cardToAllies = false,
   onCardToAllies = null,
+  giveCard,
   onGiveCard
 }) => {
   return ( 
@@ -32,6 +33,7 @@ const CardModal = ({
         onCardToHand={onCardToHand}
         cardToAllies={cardToAllies}
         onCardToAllies={onCardToAllies}
+        giveCard={giveCard}
         onGiveCard={onGiveCard}
         currentPlayer={currentPlayer}
       />

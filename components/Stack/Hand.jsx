@@ -75,6 +75,7 @@ const Hand = ({ cards, onDiscard, onGiveCard, currentPlayer }) => {
         onPress={() => toggleCardModal (cardToShow)} 
         discard={true} 
         onDiscard={handleDiscard}
+        giveCard={true}
         onGiveCard={handleGiveCard}
       />
     </View>

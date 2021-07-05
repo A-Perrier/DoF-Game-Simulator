@@ -48,6 +48,7 @@ const CardModalView = ({
   onCardToHand = null,
   cardToAllies = false,
   onCardToAllies = null,
+  giveCard,
   onGiveCard
  }) => {
 
@@ -76,6 +77,7 @@ const CardModalView = ({
           </Pressable>
         }
         {
+          giveCard &&
           players.map((player, index) => {
             if (player !== currentPlayer) {
               return (

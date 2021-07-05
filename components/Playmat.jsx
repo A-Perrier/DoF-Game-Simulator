@@ -94,7 +94,7 @@ const Playmat = ({ player, dispatch, rounds }) => {
 
 
   function onGiveCard (card, target, source) {
-    const action = { type: 'GIVE_TO_PLAYER', value: { player, target, card, source} }
+    const action = { type: 'GIVE_TO_PLAYER', value: { player, target, card, source } }
     dispatch(action)
   }
 
@@ -109,8 +109,8 @@ const Playmat = ({ player, dispatch, rounds }) => {
         cards={cardsRevealed} 
         onCardToHand={onCardToHand}
         onCardToAllies={onCardToAllies}
-        onGiveCard={onGiveCard} 
-        currentPlayer={player}
+        //onGiveCard={onGiveCard} 
+        //currentPlayer={player}
       />
       <View style={styles.allies}>
         <Allies cards={player.allies} onDiscard={onDiscard} />

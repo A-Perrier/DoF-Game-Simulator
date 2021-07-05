@@ -150,7 +150,21 @@ export function manageGame (state = initialState, action) {
       card = action.value.card
       source = action.value.source
 
-      console.log('Give to player ! ', currentPlayer, target, card, source)
+      playersCopy = state.players.slice()
+      playersCopy.map(player => {
+        if (player === currentPlayer) {
+          player.remove(card, source)
+        }
+
+        if (player === target) {
+          player.addCard(card, source)
+        }
+      })
+
+      nextState = {
+        ... state,
+        players: playersCopy
+      }
       
       return nextState || state
 
