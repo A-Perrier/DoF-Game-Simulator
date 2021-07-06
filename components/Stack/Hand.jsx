@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Jomhuria',
     fontSize: 24,
     textAlign: 'center',
-    marginLeft: -35
+    marginLeft: -30
   }
 })
 

@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Jomhuria',
     fontSize: 24,
     textAlign: 'center',
-    marginTop: -11
+    marginTop: -11,
+    marginLeft: 2
   }
 })
 
