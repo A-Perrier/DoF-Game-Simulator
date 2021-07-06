@@ -5,6 +5,7 @@ import GameTable from './GameTable';
 import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux'
 import RuleBook from './RuleBook';
+import Stopwatch from './Stopwatch/Stopwatch';
 
 
 const styles = StyleSheet.create({
@@ -65,6 +66,7 @@ const Game = ({ playersFromApp, roundsFromApp, dispatch }) => {
   return (
   <View style={styles.gameContainer}>
     <RuleBook />
+    <Stopwatch />
     <NavigationContainer>
       <Tabs.Navigator
         style={styles.tabbar} 

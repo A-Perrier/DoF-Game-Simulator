@@ -17,10 +17,12 @@ Cette application n'est en aucun cas un jeu, mais un support de pioche et de con
 - [x] Passage d'une carte des rencontres à la main
 - [x] Blocage de l'ajout en main si 7 cartes présentes
 - [x] Livret de règles
+- [x] Chronomètre
 
 ## Fonctionnalités secondaires
 - [x] Navigation entre les différentes cartes rencontres révélées
 - [ ] Passage de la main aux rencontres (si fausse manipulation)
 - [ ] Afficher le donjon vide s'il n'y a plus de cartes dedans
+- [ ] Afficher les items vides s'il n'y a plus de cartes dans le paquet
 - [x] S'il n'y a qu'un joueur, enlever les cartes multijoueur
-- [ ] Gérer des placeholders pour les piles vides
+- [x] Gérer des placeholders pour les piles vides
